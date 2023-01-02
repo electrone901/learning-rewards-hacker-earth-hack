@@ -1,0 +1,300 @@
+.container {
+    padding: 0 2rem;
+}
+
+.main {
+    min-height: 100vh;
+    padding: 4rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing {
+    min-height: 100vh;
+    padding: 4rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.title a {
+    color: #0070f3;
+    text-decoration: none;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+    text-decoration: underline;
+}
+
+.title {
+    margin: 0;
+    line-height: 1.15;
+    font-size: 4rem;
+}
+
+.title,
+.description {
+    text-align: center;
+}
+
+.description {
+    margin: 4rem 0;
+    line-height: 1.5;
+    font-size: 1.5rem;
+}
+
+.subtitle {
+    max-width: 360px;
+}
+
+.limitCharacters {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 500px;
+}
+
+.code {
+    background: #fafafa;
+    border-radius: 5px;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 800px;
+}
+
+.card {
+    margin: 1rem;
+    padding: 1.5rem;
+    text-align: left;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    max-width: 300px;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+    color: #0070f3;
+    border-color: #0070f3;
+}
+
+.card h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+}
+
+.card p {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+.logo {
+    height: 1em;
+    margin-left: 0.5rem;
+}
+
+.connectButton {
+    background: linear-gradient(90deg, #bc000f 0%, #7d0000 100%) !important;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 147px;
+}
+
+.connectButton:hover {
+    border: 1px solid rgba(255, 196, 196, 0.5);
+}
+
+.ellipseOne {
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    left: 150px;
+    top: -80px;
+    background: radial-gradient( 50% 50% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(59, 14, 8, 0) 100%);
+    z-index: 0;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 36px;
+    color: #ffffff;
+}
+
+.questCard {
+    padding: 27px 24px;
+    gap: 10px;
+    background: #131424;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    transition: border 0.2s ease-in-out;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.lockedQuest {
+    padding: 27px 24px;
+    gap: 10px;
+    background: #0d0e1f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    transition: border 0.2s ease-in-out;
+    z-index: 1;
+}
+
+.questCard:hover {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rewardPill {
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+.loadingContainer {
+    min-height: 100vh;
+    padding: 4rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobileText {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #ffffff;
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.75);
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.titleContainer {
+    padding-top: 8rem;
+}
+
+.showcase {
+    width: 100%;
+    height: 93vh;
+    position: relative;
+    background: url('/bg.png') no-repeat center center/cover;
+}
+
+.showcase::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: inset 120px 100px 250px #000000, inset -120px -100px 250px #000000;
+}
+
+.showcaseContent {
+    position: relative;
+    z-index: 2;
+    width: 65%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 15rem;
+}
+
+.showcaseContent h1 {
+    font-weight: 700;
+    font-size: 5.2rem;
+    line-height: 1.1;
+    margin: 0 0 2rem;
+}
+
+.showcaseContent p {
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.9rem;
+    line-height: 1.25;
+    margin: 0 0 2rem;
+}
+
+.root {
+    flex-grow: 1;
+}
+
+.paper {
+    padding: 10px;
+    text-align: 'center';
+    color: white;
+}
+
+.steps {
+    width: 200px;
+    height: 200px;
+}
+
+.test {
+    width: 70%;
+    color: white;
+    font-size: 1.2rem;
+    background-color: blue;
+    padding: 1rem;
+}
+
+.test:hover {
+    transition: 0.2s;
+    background-color: blue !important;
+    font-weight: 800 !important;
+}
+
+.savePost {
+    margin-top: 2rem;
+    background-color: #0070f3 !important;
+    width: 12rem;
+}
+
+.btnBack {
+    margin-top: 2rem;
+    background-color: #f3f5f8 !important;
+    width: 10rem;
+    color: #000000 !important;
+    margin-right: 0.4rem;
+}
+
+.upload {
+    padding: 1rem;
+    color: #fff;
+    background-color: #1ec61e !important;
+}

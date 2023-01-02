@@ -1,0 +1,398 @@
+.container {
+    width: 100%;
+    color: white;
+    padding: 5rem;
+    padding-top: 8rem;
+}
+
+.title {
+    font-weight: 590;
+    font-size: 28px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+.secondaryBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 40px;
+    gap: 10px;
+    width: 100% !important;
+    height: 56px !important;
+    border-radius: 50px !important;
+    background-color: black !important;
+    background: linear-gradient(black, black) padding-box, linear-gradient(to right, #9e00ff, #ff1d89) border-box !important;
+    border: 3px solid transparent !important;
+}
+
+.secondaryBtn2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 40px;
+    gap: 10px;
+    width: 189px !important;
+    height: 56px !important;
+    border-radius: 50px !important;
+    background-color: black !important;
+    background: linear-gradient(black, black) padding-box, linear-gradient(to right, #9e00ff, #ff1d89) border-box !important;
+    border: 3px solid transparent !important;
+}
+
+.tableRowContainer {
+    width: 1200px;
+    height: 80px;
+    /* background: #2e2e2e !important; */
+    /* border-radius: 10px !important; */
+    position: relative;
+    background: #131424;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.tableHeaderContainer {
+    position: relative;
+    width: 100%;
+    padding: 1rem;
+}
+
+.imageHeader1 {
+    position: absolute;
+    left: 30px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.tableHeader1 {
+    position: absolute;
+    width: 50px;
+    text-align: center;
+    left: 30px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.tableHeader2 {
+    position: absolute;
+    left: 150px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.tableHeader3 {
+    position: absolute;
+    /* width: 120px; */
+    text-align: center;
+    left: 350px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.tableHeader4 {
+    position: absolute;
+    /* width: 50px; */
+    text-align: center;
+    left: 600px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.tableHeader5 {
+    position: absolute;
+    left: 800px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.tableHeader6 {
+    position: absolute;
+    left: 900px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.text {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.selected {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    padding: 1rem;
+    gap: 10px;
+    width: 241px;
+    height: 58px;
+    background: rgba(255, 0, 122, 0.2);
+    background: linear-gradient(#431028, #431028) padding-box, linear-gradient(to right, #9e00ff, #ff1d89) border-box !important;
+    border: 3px solid transparent !important;
+    border-radius: 10px;
+}
+
+.accordionCell {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    padding: 1rem;
+    gap: 10px;
+    width: 241px;
+    height: 58px;
+    border: 2px solid #a8a8a8;
+    border-radius: 10px;
+}
+
+.subtext {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    color: #a8a8a8;
+}
+
+.accordionItem {
+    padding: 1rem 0;
+}
+
+.rangeInput {
+    width: 96px !important;
+    height: 58px !important;
+}
+
+.filterContainer {
+    padding: 16px 0px 16px 8px;
+    gap: 10px;
+    height: 40px;
+    background: linear-gradient(#431028, #431028) padding-box, linear-gradient(to right, #9e00ff, #ff1d89) border-box !important;
+    border: 2px solid transparent !important;
+    border-radius: 10px;
+    justify-content: space-between !important;
+}
+
+.modalContent {
+    max-width: 800px !important;
+    background-color: #2e2e2e !important;
+    border-radius: 15px !important;
+    padding: 1rem;
+    padding-bottom: 2rem;
+}
+
+.modalSubtitle {
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    line-height: 31px;
+    color: #a8a8a8;
+}
+
+.modalHeader {
+    font-weight: 700 !important;
+    font-size: 36px !important;
+}
+
+.modalContentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.modalOverlay {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.modalBody {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 2rem;
+}
+
+.modalSubContainer {
+    width: 100%;
+    border: 1px solid #332f3a;
+    border-radius: 25px;
+    padding: 1rem 0;
+}
+
+.modalSubTextContainer {
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.modalTitle {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    color: #ffffff;
+}
+
+.modalSubtitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #b1b1b1;
+}
+
+.modalImage {
+    width: 163px;
+    height: 108.08px;
+    left: 326px;
+    top: 348px;
+    border: 1px solid #2b2b2b;
+    border-radius: 25px;
+}
+
+.modalBtn {
+    width: 222px !important;
+    height: 53px !important;
+    background: #ffffff !important;
+    border: 1px solid #211e27 !important;
+    border-radius: 10px !important;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.modalBtn2 {
+    width: 222px !important;
+    height: 53px !important;
+    border: 0.5px solid #f8f8f8 !important;
+    border-radius: 10px !important;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #f8f8f8;
+    background-color: transparent !important;
+}
+
+.modalInput {
+    width: 320px !important;
+    height: 52px !important;
+    border: 1px solid #332f3a !important;
+    border-radius: 15px !important;
+}
+
+.inputContainer {
+    align-items: flex-start !important;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.inputUnit {
+    position: absolute;
+    top: 53%;
+    right: 1.5rem;
+    font-weight: 500;
+    color: #5a5a5a;
+}
+
+.inputHeader {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 31px;
+}
+
+.input {
+    width: 350px !important;
+    height: 70px !important;
+    padding: 0.5rem;
+    border-radius: 15px !important;
+    border: 2px solid black !important;
+    background-color: white !important;
+    color: black;
+    outline: none;
+}
+
+.input:focus {
+    border: 2px solid #ff1d89 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.selectBox {
+    width: 750px;
+    height: 70px;
+    padding: 1rem;
+    border-radius: 15px;
+    border: 2px solid black !important;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.selectionContainer {
+    position: absolute;
+    background: white;
+    color: black;
+    z-index: 1;
+    left: 275px;
+    top: 230px;
+    width: 475px;
+    height: 230px;
+    overflow-y: scroll;
+    padding: 1rem;
+    border-radius: 15px;
+    user-select: none;
+}
+
+.tagsBox {
+    width: 475px;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.checkboxTitle {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #5a5a5a;
+}
+
+.modalBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 40px;
+    gap: 10px;
+    width: 100% !important;
+    height: 56px !important;
+    border-radius: 50px !important;
+    background-color: black !important;
+    color: white;
+    background: linear-gradient(#2e2e2e, #2e2e2e) padding-box, linear-gradient(to right, #9e00ff, #ff1d89) border-box !important;
+    border: 3px solid transparent !important;
+}
+
+.sbtImage {
+    width: 325px;
+    height: 325px;
+    border-radius: 20px;
+}
+
+.primaryBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 40px;
+    gap: 10px;
+    width: 189px !important;
+    height: 56px !important;
+    background: linear-gradient( 90.77deg, #9e00ff -8.24%, #ff1d89 100%) !important;
+    border-radius: 50px !important;
+}

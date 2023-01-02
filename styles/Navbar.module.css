@@ -1,0 +1,55 @@
+.navbarContainer {
+    position: absolute;
+    width: 100%;
+    z-index: 100 !important;
+    color: white;
+}
+
+.navbar {
+    margin-top: 0 !important;
+    width: 100%;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    height: 72px;
+    color: white;
+}
+
+.announcement {
+    width: 100%;
+    padding: 0.1rem;
+    text-align: center;
+    background-color: #82000b;
+}
+
+.logo {
+    width: 300px;
+}
+
+.navLeftSection {
+    gap: 1rem;
+}
+
+.addressPill {
+    padding: 0.5rem 1rem;
+    background: linear-gradient(90deg, #bc000f 0%, #7d0000 100%) !important;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 147px;
+    font-weight: 500;
+    transition: border 0.2s ease-in-out;
+}
+
+.addressPill:hover {
+    border: 1px solid rgba(255, 196, 196, 0.5);
+}
+
+.connectButton {
+    background: linear-gradient(90deg, #bc000f 0%, #7d0000 100%) !important;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 147px;
+}
+
+.connectButton:hover {
+    border: 1px solid rgba(255, 196, 196, 0.5);
+}

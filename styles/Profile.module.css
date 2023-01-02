@@ -1,0 +1,123 @@
+.profileImage {
+    width: 130px;
+    border-radius: 50%;
+}
+
+.profileName {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 36px;
+}
+
+.badgeSectionTitle {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 36px;
+    padding-bottom: 1rem;
+}
+
+.nullTitle {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 36px;
+}
+
+.nullSubtitle {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    padding-bottom: 1rem;
+}
+
+.profileAddress {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #878787;
+}
+
+.socialIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #1d1f2e;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileContainer {
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end !important;
+    position: absolute;
+    bottom: 25px;
+}
+
+.badgeContainer {
+    position: relative;
+}
+
+.badgeTitle {
+    position: absolute;
+    font-weight: 700;
+    font-size: 20px;
+    bottom: 1rem;
+}
+
+.badgeImage {
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.7;
+    transition: 0.2s ease-in-out;
+}
+
+.badgeImage:hover {
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+.twitterButton {
+    background: linear-gradient(90deg, #00acee 0%, #0087bb 100%) !important;
+    border: 1px solid #00acee !important;
+    border-radius: 10px !important;
+}
+
+.socialPill {
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+.editIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #1d1f2e;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pencilIcon {
+    fill: rgba(255, 255, 255, 0.4);
+    transition: 0.2s ease-in-out;
+}
+
+.pencilIcon:hover {
+    fill: white;
+}
+
+.profileItem {
+    text-align: center !important;
+    color: white;
+}
+
+.profileParaghap {
+    font-size: 1.2rem;
+}
