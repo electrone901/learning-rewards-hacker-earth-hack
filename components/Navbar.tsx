@@ -20,8 +20,11 @@ const Navbar = ({ account, setAccount }) => {
   }
 
   function onClickDisconnect() {
+    window.localStorage.removeItem('ACCOUNT')
+    window.localStorage.setItem('isWalletConnected', false)
+
     setAccount(undefined)
-    // router.push('/') push to landing page
+    router.push('/')
   }
 
   return (

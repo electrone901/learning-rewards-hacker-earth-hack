@@ -14,28 +14,28 @@ const getEthereumObject = () => window.ethereum
  * If there is no account linked, it will return null.
  */
 const findAccount = async () => {
-  try {
-    const ethereum = getEthereumObject()
-    /*
-     * First make sure we have access to the Ethereum object.
-     */
-    if (!ethereum) {
-      console.error('Make sure you have Metamask!')
-      return null
-    }
-    const accounts = await ethereum.request({ method: 'eth_accounts' })
-    if (accounts.length !== 0) {
-      const account = accounts[0]
-      window.localStorage.setItem('ACCOUNT', account)
-      return account
-    } else {
-      console.error('No authorized account found')
-      return null
-    }
-  } catch (error) {
-    console.error(error)
-    return null
-  }
+  //   try {
+  //     const ethereum = getEthereumObject()
+  //     /*
+  //      * First make sure we have access to the Ethereum object.
+  //      */
+  //     if (!ethereum) {
+  //       console.error('Make sure you have Metamask!')
+  //       return null
+  //     }
+  //     const accounts = await ethereum.request({ method: 'eth_accounts' })
+  //     if (accounts.length !== 0) {
+  //       const account = accounts[0]
+  //       //window.localStorage.setItem('ACCOUNT', account)
+  //       return account
+  //     } else {
+  //       console.error('No authorized account found')
+  //       return null
+  //     }
+  //   } catch (error) {
+  //     console.error(error)
+  //     return null
+  //   }
 }
 
 export function Landing() {
@@ -49,38 +49,35 @@ export function Landing() {
     setProvider,
     signer,
     setSigner,
-    allTasks,
-    setAllTasks,
   } = useContext(MyAppContext)
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const fetchedAddress = window.localStorage.getItem('ACCOUNT')
-      if (!account && fetchedAddress) setAccount(fetchedAddress)
-      if (account && account !== fetchedAddress)
-        window.localStorage.setItem('ACCOUNT', account)
-    }
+    // if (typeof window !== 'undefined') {
+    //   const fetchedAddress = window.localStorage.getItem('ACCOUNT')
+    //   if (!account && fetchedAddress) setAccount(fetchedAddress)
+    //   if (account && account !== fetchedAddress)
+    //     window.localStorage.setItem('ACCOUNT', account)
+    // }
 
     findAccount().then(async (account) => {
       if (account !== null) {
         // setAccount(account)
-        const providerTemp = new ethers.providers.Web3Provider(window.ethereum)
-        setProvider(providerTemp)
-        const { chainId } = await providerTemp.getNetwork()
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        setProvider(provider)
+        const { chainId } = await provider.getNetwork()
         const deployedContract = '0x7b2758469161F93372Fd20f99A7bbA2059E7CBC5'
-        const signer = providerTemp.getSigner()
+        const signer = provider.getSigner()
         setSigner(signer)
 
         if (chainId == '1001') {
-          let tempContract = new ethers.Contract(deployedContract, ABI, signer)
-          setContract(tempContract)
-          // getAllTasks(tempContract)
+          let contract = new ethers.Contract(deployedContract, ABI, signer)
+          setContract(contract)
         } else {
           alert('Please connect to Klaynt Test Network!')
         }
       }
     })
-  }, [account])
+  }, [])
 
   const connectWallet = async () => {
     try {
@@ -89,10 +86,18 @@ export function Landing() {
         alert('Please get a Wallet!')
         return
       }
-      const providerTemp = new ethers.providers.Web3Provider(window.ethereum)
-      providerTemp.send('eth_requestAccounts', []).then((accounts) => {
-        if (accounts.length > 0) {
-          setAccount(accounts[0])
+      setProvider(new ethers.providers.Web3Provider(window.ethereum))
+      await window.ethereum.request({
+        method: "wallet_requestPermissions",
+        params: [{
+          eth_accounts: {}
+        }]
+      }).then(() => ethereum.request({
+        method: 'eth_requestAccounts'
+      })).then((account: string) => {
+        if (account.length > 0) {
+          setAccount(account[0])
+          window.localStorage.setItem('isWalletConnected', true)
           const fetchedAddress = window.localStorage.getItem('ACCOUNT')
           if (!account && fetchedAddress) setAccount(fetchedAddress)
           if (account && account !== fetchedAddress)
