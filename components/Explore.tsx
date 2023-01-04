@@ -61,7 +61,6 @@ function Explore() {
   //   )
 
   // if (fetchedQuests.length === 0) return <Error404 />
-  console.log('🚀 ~ file: Explore.tsx:50 ~ Explore ~ Error404')
 
   function getStarted(e) {
     e.preventDefault()
