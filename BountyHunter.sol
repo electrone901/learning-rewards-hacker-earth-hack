@@ -12,31 +12,41 @@ contract BountyHunter {
         bool completed;
         address owner;
         uint256 price;
+        bool isProject;
     }
 
     struct TaskId {
-        uint id;
+        uint256 id;
     }
 
     uint8 id = 0;
 
-    mapping(uint256 => address) public ownerById;
+    mapping(uint256 => address) ownerById;
     mapping(uint256 => address) public winner;
-    mapping(address => uint[]) tasksByWinner;
-    mapping(address => uint[]) tasksByOwner;
+    mapping(address => uint256[]) tasksByWinner;
+    mapping(address => uint256[]) tasksByOwner;
     mapping(address => TaskId[]) subscriptions;
+    mapping(uint256 => uint256[]) internal answers;
+    mapping(address => uint256[]) public isBlackListed;
 
     Task[] public tasks;
 
-    event taskAdded(address indexed _from, uint8 indexed _id, uint _value);
-    event subscribed(address indexed _from, uint _value);
-    event taskCompleted(address indexed _to, uint indexed _taskId);
-    event rewardCollected(address indexed _to, uint8 indexed _taskId, uint _value);
+    event taskAdded(address indexed _from, uint8 indexed _id, uint256 _value);
+    event subscribed(address indexed _from, uint256 _value);
+    event taskCompleted(address indexed _to, uint256 indexed _taskId);
+    event projectRewarded(address indexed _to, uint256 indexed _taskId);
+    event rewardCollected(
+        address indexed _to,
+        uint8 indexed _taskId,
+        uint256 _value
+    );
 
     function addTask(
         string memory _IPFSCid,
         uint256 _reward,
-        uint256 _price
+        uint256 _price,
+        bool _isProject,
+        uint256[] memory _answers
     ) public payable {
         require(msg.value >= _reward, "You forgot to transfer the reward");
         tasks.push(
@@ -46,14 +56,23 @@ contract BountyHunter {
                 reward: msg.value,
                 completed: false,
                 owner: msg.sender,
-                price: _price
+                price: _price,
+                isProject: _isProject
             })
         );
         tasksByOwner[msg.sender].push(id);
         ownerById[id] = msg.sender;
+        answers[id] = _answers;
         emit taskAdded(msg.sender, id, msg.value);
         id++;
+    }
 
+    function getAnswers(uint256 _taskId)
+        public
+        view
+        returns (uint256[] memory)
+    {
+        return answers[_taskId];
     }
 
     function getOwnerById(uint256 _id) public view returns (address) {
@@ -65,11 +84,11 @@ contract BountyHunter {
     }
 
     function getAllTasksByOwner(address _owner)
-        public view
-        returns (uint[] memory)
+        public
+        view
+        returns (uint256[] memory)
     {
         return tasksByOwner[_owner];
-        
     }
 
     // function getAllTasksByOwner() public view returns (Task[] memory) {
@@ -77,18 +96,31 @@ contract BountyHunter {
     // }
 
     function getAllTasksByWinner(address _winner)
-        public view
-        returns (uint[] memory)
+        public
+        view
+        returns (uint256[] memory)
     {
         return tasksByWinner[_winner];
     }
 
     function subscribe(uint256 _taskId) public payable {
-        require(msg.value >= tasks[_taskId].price, "You did not send enough money");
+        require(
+            msg.value >= tasks[_taskId].price,
+            "You did not send enough money"
+        );
+        require(id != _taskId);
         subscriptions[msg.sender].push(TaskId(_taskId));
         tasks[_taskId].reward += msg.value;
         emit subscribed(msg.sender, msg.value);
     }
+
+    // function isSubscribed(uint256 _taskId) public returns (bool _isSubscribed) {
+    //     for (uint i = 0; i < subscriptions[msg.sender].length; i++) {
+    //         if (subscriptions[msg.sender][i] == _taskId) {
+
+    //         }
+    //     }
+    // }
 
     function getSubscriptions(address _subscriber)
         public
@@ -98,25 +130,58 @@ contract BountyHunter {
         return subscriptions[_subscriber];
     }
 
-    function transferReward(uint8 _taskId)
+    function transferReward(uint8 _taskId, uint256 _value)
         public
         payable
         returns (bool, bytes memory)
     {
-        require(winner[_taskId] == msg.sender, "You must be the winner to collect the reward");
+        require(tasks[_taskId].isProject);
+        require(
+            winner[_taskId] == msg.sender,
+            "You must be the winner to collect the reward"
+        );
+        (bool sent, bytes memory data) = msg.sender.call{value: _value}("");
+        emit rewardCollected(msg.sender, _taskId, msg.value);
+        return (sent, data);
+    }
+
+    function completeProject(address _to, uint8 _taskId) public {
+        require(tasks[_taskId].isProject);
+        require(
+            tasks[_taskId].owner == msg.sender,
+            "You're not the owner of this task"
+        );
+        winner[_taskId] = _to;
+        tasksByWinner[_to].push(_taskId);
+        emit projectRewarded(_to, _taskId);
+    }
+
+    function completeQuiz(uint8 _taskId, uint256[] memory _answers)
+        public
+        payable
+        returns (bool, bytes memory)
+    {
+        for (uint256 i = 0; i < isBlackListed[msg.sender].length; i++) {
+            require(
+                isBlackListed[msg.sender][i] != _taskId,
+                "You may not try again"
+            );
+        }
+        isBlackListed[msg.sender].push(_taskId);
+        require(
+            keccak256(abi.encodePacked(answers[_taskId])) ==
+                keccak256(abi.encodePacked(_answers)),
+            "Sorry, wrong answer"
+        );
+        winner[_taskId] = msg.sender;
+        tasksByWinner[msg.sender].push(_taskId);
+        tasks[_taskId].completed = true;
+        emit taskCompleted(msg.sender, _taskId);
         (bool sent, bytes memory data) = msg.sender.call{
             value: tasks[_taskId].reward
         }("");
         emit rewardCollected(msg.sender, _taskId, msg.value);
         return (sent, data);
-    }
-
-    function completeTask(address _to, uint8 _taskId) public {
-        require(tasks[_taskId].owner == msg.sender, "You're not the owner of this task");
-        winner[_taskId] = _to;
-        tasksByWinner[_to].push(_taskId);
-        tasks[_taskId].completed = true;
-        emit taskCompleted(_to, _taskId);
     }
 
     function contractBalance() public view returns (uint256) {
