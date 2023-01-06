@@ -65,7 +65,7 @@ export function Landing() {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         setProvider(provider)
         const { chainId } = await provider.getNetwork()
-        const deployedContract = '0x7b2758469161F93372Fd20f99A7bbA2059E7CBC5'
+        const deployedContract = '0x3f854A33eb072e355EDa90D60f646766C11A3D43'
         const signer = provider.getSigner()
         setSigner(signer)
 

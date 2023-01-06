@@ -15,6 +15,16 @@ export const ABI = [
 				"internalType": "uint256",
 				"name": "_price",
 				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "_isProject",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_answers",
+				"type": "uint256[]"
 			}
 		],
 		"name": "addTask",
@@ -35,10 +45,58 @@ export const ABI = [
 				"type": "uint8"
 			}
 		],
-		"name": "completeTask",
+		"name": "completeProject",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "_taskId",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_answers",
+				"type": "uint256[]"
+			}
+		],
+		"name": "completeQuiz",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"internalType": "bytes",
+				"name": "",
+				"type": "bytes"
+			}
+		],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "_taskId",
+				"type": "uint256"
+			}
+		],
+		"name": "projectRewarded",
+		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -147,6 +205,11 @@ export const ABI = [
 				"internalType": "uint8",
 				"name": "_taskId",
 				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_value",
+				"type": "uint256"
 			}
 		],
 		"name": "transferReward",
@@ -213,6 +276,11 @@ export const ABI = [
 						"internalType": "uint256",
 						"name": "price",
 						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isProject",
+						"type": "bool"
 					}
 				],
 				"internalType": "struct BountyHunter.Task[]",
@@ -251,6 +319,25 @@ export const ABI = [
 			}
 		],
 		"name": "getAllTasksByWinner",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_taskId",
+				"type": "uint256"
+			}
+		],
+		"name": "getAnswers",
 		"outputs": [
 			{
 				"internalType": "uint256[]",
@@ -309,17 +396,22 @@ export const ABI = [
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
 		],
-		"name": "ownerById",
+		"name": "isBlackListed",
 		"outputs": [
 			{
-				"internalType": "address",
+				"internalType": "uint256",
 				"name": "",
-				"type": "address"
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -364,6 +456,11 @@ export const ABI = [
 				"internalType": "uint256",
 				"name": "price",
 				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "isProject",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
