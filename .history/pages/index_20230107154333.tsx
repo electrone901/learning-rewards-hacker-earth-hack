@@ -41,7 +41,7 @@ function Home() {
     )
   }
 
-  return !account ? <Landing /> : <Explore />
+  return !account ? <ProjectForm /> : <Explore />
 }
 
 export default withTransition(Home)

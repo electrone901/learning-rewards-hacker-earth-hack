@@ -94,10 +94,10 @@ function Create() {
           ? image
           : 'https://images.unsplash.com/photo-1639737496523-ea268d39924d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
 
-        title: title ? title : 'Getting Started with Klaytn Basics',
+        title: title ? title : 'Getting Started with Klaynt Basics',
         description: description
           ? description
-          : 'Klaytn Basics concepts to get started in your journey with Klaytn.',
+          : 'Klaytn Basics concepts to get started in your journey with Klaynt.',
         rewardAmount: rewardAmount ? rewardAmount : '0.99 USDC',
         experiencePoint: experiencePoint ? experiencePoint : '100XP',
         level: level ? level : 1,
@@ -110,7 +110,7 @@ function Create() {
 
       const client = new NFTStorage({ token: apiKey })
       const metadata = await client.store({
-        name: title ? title : 'Getting Started with Klaytn Basics',
+        name: title ? title : 'Getting Started with Klaynt Basics',
         description: JSON.stringify(obj),
         image: new File([image], 'imageName', { type: 'image/*' }),
       })
@@ -120,14 +120,10 @@ function Create() {
         const fullUrl = `https://cloudflare-ipfs.com/ipfs/${url}`
         console.log('fullUrl', fullUrl)
 
-        const isProject = false
-        const arrayAnswers = [1, 4, 1]
         const saveToContract = await contract.addTask(
           fullUrl,
           rewardAmountInt,
           subscriptionFeeInt,
-          isProject,
-          arrayAnswers,
           { value: ethers.utils.parseEther(rewardAmount) },
         )
         const tx = await saveToContract.wait()

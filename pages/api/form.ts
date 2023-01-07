@@ -1,7 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type ResponseData = {
-  data: string
+  first: string,
+  last: string,
+  description: string,
+  twitter: string,
+  instagram: string,
+  github: string,
+  whatsapp: string,
+  email: string,
 }
 
 export default function handler(
@@ -11,11 +18,6 @@ export default function handler(
   const body = req.body
   console.log('body: ', body)
 
-  // Both of these are required.
-  if (!body.first || !body.last) {
-    return res.json({ data: 'First or last name not found' })
-  }
-
   // Found the name.
-  res.json({ data: `${body.first} ${body.last} ${body.description} ${body.twitter} ${body.instagram} ${body.github} ${body.whatsapp}` })
+  res.json({ first: `${body.first}`, last: `${body.last}`, description: `${body.description}`, twitter: `${body.twitter}`, instagram: `${body.instagram}`, github: `${body.github}`, whatsapp: `${body.whatsapp}`, email: `${body.email}` })
 }

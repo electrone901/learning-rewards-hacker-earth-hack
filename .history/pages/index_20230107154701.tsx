@@ -6,7 +6,6 @@ import styles from '../styles/Home.module.css'
 import { useEffect, useState, useContext } from 'react'
 import { VStack, Text } from '@chakra-ui/react'
 import { MyAppContext } from '../pages/_app'
-import ProjectForm from '@components/ProjectForm'
 
 function Home() {
   const { account } = useContext(MyAppContext)

@@ -73,7 +73,7 @@ export function Landing() {
 
           let contract = new ethers.Contract(deployedContract, ABI, signer);
           setContract(contract);
-        } else if (chainId == 80001) {
+        } else if ((chainId = 80001)) {
           const deployedContract = "0x84260728E9A7fEA9Ab39f8Ca583Ed0afa2557bC0";
           const signer = provider.getSigner();
           setSigner(signer);
