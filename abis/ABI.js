@@ -67,12 +67,12 @@ export const ABI = [
 		"outputs": [
 			{
 				"internalType": "bool",
-				"name": "",
+				"name": "_sent",
 				"type": "bool"
 			},
 			{
 				"internalType": "bytes",
-				"name": "",
+				"name": "_data",
 				"type": "bytes"
 			}
 		],
