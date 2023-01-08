@@ -1,5 +1,5 @@
-import React from "react";
-import Lottie from "react-lottie";
+import React from 'react'
+import Lottie from 'react-lottie'
 
 const SuccessLottie = () => {
   const defaultOptions = {
@@ -7,24 +7,24 @@ const SuccessLottie = () => {
     autoplay: true,
     animationData: LottieJSON,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
+      preserveAspectRatio: 'xMidYMid slice',
     },
-  };
+  }
 
-  return <Lottie options={defaultOptions} speed={1} height={400} width={400} />;
-};
+  return <Lottie options={defaultOptions} speed={1} height={400} width={400} />
+}
 
-export default SuccessLottie;
+export default SuccessLottie
 
 const LottieJSON = {
-  v: "5.5.7",
-  meta: { g: "LottieFiles AE 0.1.20", a: "", k: "", d: "", tc: "#FFFFFF" },
+  v: '5.5.7',
+  meta: { g: 'LottieFiles AE 0.1.20', a: '', k: '', d: '', tc: '#FFFFFF' },
   fr: 60,
   ip: 0,
   op: 180,
   w: 1920,
   h: 1920,
-  nm: "Gpay Tick",
+  nm: 'Gpay Tick',
   ddd: 0,
   assets: [],
   layers: [
@@ -32,7 +32,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 1,
       ty: 4,
-      nm: "Tick",
+      nm: 'Tick',
       parent: 4,
       sr: 1,
       ks: {
@@ -87,11 +87,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -115,24 +115,24 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "st",
+              ty: 'st',
               c: { a: 0, k: [1, 1, 1, 1], ix: 3 },
               o: { a: 0, k: 100, ix: 4 },
               w: { a: 0, k: 50, ix: 5 },
               lc: 2,
               lj: 2,
               bm: 0,
-              nm: "Stroke 1",
-              mn: "ADBE Vector Graphic - Stroke",
+              nm: 'Stroke 1',
+              mn: 'ADBE Vector Graphic - Stroke',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [278.033, 227.218], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -140,19 +140,19 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
         {
-          ty: "tm",
+          ty: 'tm',
           s: { a: 0, k: 0, ix: 1 },
           e: {
             a: 1,
@@ -170,8 +170,8 @@ const LottieJSON = {
           o: { a: 0, k: 0, ix: 3 },
           m: 1,
           ix: 2,
-          nm: "Trim Paths 1",
-          mn: "ADBE Vector Filter - Trim",
+          nm: 'Trim Paths 1',
+          mn: 'ADBE Vector Filter - Trim',
           hd: false,
         },
       ],
@@ -184,7 +184,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 2,
       ty: 4,
-      nm: "Glow Mask",
+      nm: 'Glow Mask',
       td: 1,
       sr: 1,
       ks: {
@@ -273,11 +273,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -304,12 +304,12 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [0.118000000598, 0.442999985639, 0.929000016755, 1],
@@ -318,12 +318,12 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [346.916, 346.917], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -331,15 +331,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -352,7 +352,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 3,
       ty: 4,
-      nm: "Glow",
+      nm: 'Glow',
       tt: 1,
       sr: 1,
       ks: {
@@ -403,11 +403,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -434,28 +434,31 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [
-                  0.788235294117647, 0.8274509803921568, 0.9372549019607843, 1,
+                  0.788235294117647,
+                  0.8274509803921568,
+                  0.9372549019607843,
+                  1,
                 ],
                 ix: 4,
               },
               o: { a: 0, k: 30, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [0, 0], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -463,15 +466,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Shape 1",
+          nm: 'Shape 1',
           np: 3,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -484,7 +487,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 4,
       ty: 4,
-      nm: "Background Circle (Blue)",
+      nm: 'Background Circle (Blue)',
       sr: 1,
       ks: {
         o: {
@@ -572,11 +575,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -603,12 +606,12 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [0.7372549019607844, 0, 0.058823529411764705, 1],
@@ -617,12 +620,12 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [346.916, 346.917], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -630,15 +633,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -651,7 +654,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 5,
       ty: 4,
-      nm: "Background(Blue)",
+      nm: 'Background(Blue)',
       parent: 4,
       sr: 1,
       ks: {
@@ -714,11 +717,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -745,12 +748,12 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [0.7372549019607844, 0, 0.058823529411764705, 1],
@@ -759,12 +762,12 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [346.916, 346.917], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -772,15 +775,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -793,7 +796,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 6,
       ty: 4,
-      nm: "Element 11",
+      nm: 'Element 11',
       sr: 1,
       ks: {
         o: {
@@ -843,11 +846,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -874,16 +877,19 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "st",
+              ty: 'st',
               c: {
                 a: 0,
                 k: [
-                  0.6039215686274509, 0.6392156862745098, 0.7686274509803922, 1,
+                  0.6039215686274509,
+                  0.6392156862745098,
+                  0.7686274509803922,
+                  1,
                 ],
                 ix: 3,
               },
@@ -892,12 +898,12 @@ const LottieJSON = {
               lc: 2,
               lj: 2,
               bm: 0,
-              nm: "Stroke 1",
-              mn: "ADBE Vector Graphic - Stroke",
+              nm: 'Stroke 1',
+              mn: 'ADBE Vector Graphic - Stroke',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [88.378, 84.131], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -905,15 +911,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -926,7 +932,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 7,
       ty: 4,
-      nm: "Element 10",
+      nm: 'Element 10',
       sr: 1,
       ks: {
         o: {
@@ -976,11 +982,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -1019,12 +1025,12 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [0.7372549019607844, 0, 0.058823529411764705, 1],
@@ -1033,12 +1039,12 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [33.514, 41.664], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -1046,15 +1052,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -1067,7 +1073,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 8,
       ty: 4,
-      nm: "Element 9",
+      nm: 'Element 9',
       sr: 1,
       ks: {
         o: {
@@ -1117,11 +1123,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -1148,12 +1154,12 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "st",
+              ty: 'st',
               c: {
                 a: 0,
                 k: [0.870999983245, 0.246999987434, 0.246999987434, 1],
@@ -1164,12 +1170,12 @@ const LottieJSON = {
               lc: 2,
               lj: 2,
               bm: 0,
-              nm: "Stroke 1",
-              mn: "ADBE Vector Graphic - Stroke",
+              nm: 'Stroke 1',
+              mn: 'ADBE Vector Graphic - Stroke',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [60.548, 78.82], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -1177,15 +1183,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -1198,7 +1204,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 9,
       ty: 4,
-      nm: "Element 8",
+      nm: 'Element 8',
       sr: 1,
       ks: {
         o: {
@@ -1248,11 +1254,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -1327,28 +1333,31 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [
-                  0.6039215686274509, 0.6392156862745098, 0.7686274509803922, 1,
+                  0.6039215686274509,
+                  0.6392156862745098,
+                  0.7686274509803922,
+                  1,
                 ],
                 ix: 4,
               },
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [47.325, 47.325], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -1356,15 +1365,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -1377,7 +1386,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 10,
       ty: 4,
-      nm: "Element 7",
+      nm: 'Element 7',
       sr: 1,
       ks: {
         o: {
@@ -1427,11 +1436,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -1458,12 +1467,12 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "st",
+              ty: 'st',
               c: {
                 a: 0,
                 k: [0.7372549019607844, 0, 0.058823529411764705, 1],
@@ -1474,12 +1483,12 @@ const LottieJSON = {
               lc: 2,
               lj: 2,
               bm: 0,
-              nm: "Stroke 1",
-              mn: "ADBE Vector Graphic - Stroke",
+              nm: 'Stroke 1',
+              mn: 'ADBE Vector Graphic - Stroke',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [77.856, 74.774], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -1487,15 +1496,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -1508,7 +1517,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 11,
       ty: 4,
-      nm: "Element 6",
+      nm: 'Element 6',
       sr: 1,
       ks: {
         o: {
@@ -1558,11 +1567,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -1637,12 +1646,12 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [0.7372549019607844, 0, 0.058823529411764705, 1],
@@ -1651,12 +1660,12 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [47.325, 47.325], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -1664,15 +1673,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -1685,7 +1694,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 12,
       ty: 4,
-      nm: "Element 5",
+      nm: 'Element 5',
       sr: 1,
       ks: {
         o: {
@@ -1735,11 +1744,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -1766,22 +1775,22 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: { a: 0, k: [0.980000035903, 0.752999997606, 0.2, 1], ix: 4 },
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [30.771, 30.771], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -1789,15 +1798,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -1810,7 +1819,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 13,
       ty: 4,
-      nm: "Element 4",
+      nm: 'Element 4',
       sr: 1,
       ks: {
         o: {
@@ -1860,11 +1869,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -1903,12 +1912,12 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [0.7372549019607844, 0, 0.058823529411764705, 1],
@@ -1917,12 +1926,12 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [42, 25.144], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -1930,15 +1939,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -1951,7 +1960,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 14,
       ty: 4,
-      nm: "Element 3",
+      nm: 'Element 3',
       sr: 1,
       ks: {
         o: {
@@ -2001,11 +2010,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -2080,12 +2089,12 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [0.277999997606, 0.677999997606, 0.490000017952, 1],
@@ -2094,12 +2103,12 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [47.325, 47.325], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -2107,15 +2116,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -2128,7 +2137,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 15,
       ty: 4,
-      nm: "Element 2",
+      nm: 'Element 2',
       sr: 1,
       ks: {
         o: {
@@ -2178,11 +2187,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -2221,28 +2230,31 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [
-                  0.6039215686274509, 0.6392156862745098, 0.7686274509803922, 1,
+                  0.6039215686274509,
+                  0.6392156862745098,
+                  0.7686274509803922,
+                  1,
                 ],
                 ix: 4,
               },
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [33.515, 41.664], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -2250,15 +2262,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -2271,7 +2283,7 @@ const LottieJSON = {
       ddd: 0,
       ind: 16,
       ty: 4,
-      nm: "Element 1",
+      nm: 'Element 1',
       sr: 1,
       ks: {
         o: {
@@ -2321,11 +2333,11 @@ const LottieJSON = {
       ao: 0,
       shapes: [
         {
-          ty: "gr",
+          ty: 'gr',
           it: [
             {
               ind: 0,
-              ty: "sh",
+              ty: 'sh',
               ix: 1,
               ks: {
                 a: 0,
@@ -2352,28 +2364,31 @@ const LottieJSON = {
                 },
                 ix: 2,
               },
-              nm: "Path 1",
-              mn: "ADBE Vector Shape - Group",
+              nm: 'Path 1',
+              mn: 'ADBE Vector Shape - Group',
               hd: false,
             },
             {
-              ty: "fl",
+              ty: 'fl',
               c: {
                 a: 0,
                 k: [
-                  0.6039215686274509, 0.6392156862745098, 0.7686274509803922, 1,
+                  0.6039215686274509,
+                  0.6392156862745098,
+                  0.7686274509803922,
+                  1,
                 ],
                 ix: 4,
               },
               o: { a: 0, k: 100, ix: 5 },
               r: 1,
               bm: 0,
-              nm: "Fill 1",
-              mn: "ADBE Vector Graphic - Fill",
+              nm: 'Fill 1',
+              mn: 'ADBE Vector Graphic - Fill',
               hd: false,
             },
             {
-              ty: "tr",
+              ty: 'tr',
               p: { a: 0, k: [30.771, 30.772], ix: 2 },
               a: { a: 0, k: [0, 0], ix: 1 },
               s: { a: 0, k: [100, 100], ix: 3 },
@@ -2381,15 +2396,15 @@ const LottieJSON = {
               o: { a: 0, k: 100, ix: 7 },
               sk: { a: 0, k: 0, ix: 4 },
               sa: { a: 0, k: 0, ix: 5 },
-              nm: "Transform",
+              nm: 'Transform',
             },
           ],
-          nm: "Group 1",
+          nm: 'Group 1',
           np: 2,
           cix: 2,
           bm: 0,
           ix: 1,
-          mn: "ADBE Vector Group",
+          mn: 'ADBE Vector Group',
           hd: false,
         },
       ],
@@ -2400,4 +2415,4 @@ const LottieJSON = {
     },
   ],
   markers: [],
-};
+}
