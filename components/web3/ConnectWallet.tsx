@@ -1,5 +1,8 @@
 import { useAccount, useNetwork, useDisconnect } from 'wagmi'
 import WalletModal from '../web3/WalletModal'
+import { MyAppContext } from '../../pages/_app'
+import { ethers } from 'ethers'
+import { ABI } from '../../abis/ABI'
 import {
   Button,
   Link,
@@ -12,7 +15,7 @@ import {
 } from '@chakra-ui/react'
 import { abridgeAddress } from '@utils/abridgeAddress'
 import { ChevronDownIcon } from '@chakra-ui/icons'
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
 import styles from '../../styles/Navbar.module.css'
 
 type ConnectWalletProps = {
@@ -20,33 +23,73 @@ type ConnectWalletProps = {
   size?: string
 }
 
-const CHAIN_ID = 80001
+const CHAIN_ID_BAOBAB = 1001
+const CHAIN_ID_MUMBAI = 80001
 
 const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
   const { data } = useAccount()
-  console.log('__data', data)
+  console.log('____ data', data)
   const { activeChain, switchNetwork } = useNetwork()
-  console.log('___switchNetwork', switchNetwork)
-  console.log(' ____activeChain', activeChain)
-  const {
-    isOpen: connectIsOpen,
-    onOpen: connectOnOpen,
-    onClose: connectOnClose,
-  } = useDisclosure()
+  console.log('____ activeChain', activeChain)
   const { isOpen, onOpen, onClose } = useDisclosure()
-  console.log(' ______onClose', onClose)
-  console.log(' ______onOpen', onOpen)
-  console.log(' ______isOpen', isOpen)
-
   const { disconnect } = useDisconnect()
-  console.log(' ______disconnect', disconnect)
 
-  const test = () => {
-    console.log('🚀 ~ file: ConnectWallet.tsx:37 ~ test ~ test')
+  const {
+    account,
+    setAccount,
+    contract,
+    setContract,
+    provider,
+    setProvider,
+    signer,
+    setSigner,
+  } = useContext(MyAppContext)
+  console.log('_____ contract', contract)
+  console.log(
+    '🚀 ~ file: ConnectWallet.tsx:47 ~ ConnectWal ~ provider',
+    provider,
+  )
+
+  const getContract = async () => {
+    const tempSigner = await provider.getSigner()
+    console.log('___tempSigner', tempSigner)
+    setSigner(tempSigner)
+
+    if (activeChain?.id == CHAIN_ID_BAOBAB) {
+      console.log('1001 network? ', activeChain.id)
+      const deployedContract = '0x6239B8e5dFE71564f580FDA36609A6D96229B3B7'
+      let contract = new ethers.Contract(deployedContract, ABI, signer)
+      setContract(contract)
+    } else if (activeChain?.id == CHAIN_ID_MUMBAI) {
+      console.log('80001 network? ', activeChain.id)
+      const deployedContract = '0x84260728E9A7fEA9Ab39f8Ca583Ed0afa2557bC0'
+      let contract = new ethers.Contract(deployedContract, ABI, signer)
+      setContract(contract)
+    } else {
+      alert('Please connect to Klaynt Test Network!')
+    }
+  }
+
+  const connectWithCoinbase = async (e) => {
+    e.preventDefault()
+    const r = await onOpen()
   }
 
   useEffect(() => {
-    if (activeChain?.id !== CHAIN_ID && switchNetwork) switchNetwork(CHAIN_ID)
+    if (data) {
+      console.log('INSIDEdata', data)
+      setAccount(data.address)
+      setProvider(data.connector)
+      window.localStorage.setItem('isWalletConnected', true)
+      const fetchedAddress = window.localStorage.getItem('ACCOUNT')
+      if (!account && fetchedAddress) setAccount(fetchedAddress)
+      if (account && account !== fetchedAddress)
+        window.localStorage.setItem('ACCOUNT', account)
+      getContract()
+    }
+
+    if (activeChain?.id !== CHAIN_ID_MUMBAI && switchNetwork)
+      switchNetwork(CHAIN_ID_BAOBAB)
   }, [activeChain])
 
   return (
@@ -55,13 +98,13 @@ const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
         <>
           {!data ? (
             <Button
-              className={styles.connectButton}
-              onClick={onOpen}
+              className={styles.connectButtonCoinbase}
+              onClick={connectWithCoinbase}
               size={size}
             >
-              Connect Wallet
+              Connect with Coinbase
             </Button>
-          ) : activeChain?.id === CHAIN_ID ? (
+          ) : activeChain?.id === CHAIN_ID_BAOBAB ? (
             <Menu>
               {({ isOpen }) => (
                 <>
@@ -122,8 +165,8 @@ const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
         <>
           {!data ? (
             <VStack marginTop="20" spacing="24px" alignItems="flex-start">
-              <button className={styles.button} onClick={connectOnOpen}>
-                Connect Wallet
+              <button className={styles.button} onClick={onOpen}>
+                Connect with Coinbase
               </button>
             </VStack>
           ) : (

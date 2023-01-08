@@ -23,10 +23,6 @@ type WalletModalProps = {
 
 export default function WalletModal({ isOpen, closeModal }: WalletModalProps) {
   const { connect, connectors, isConnected, isConnecting, error } = useConnect()
-  console.log(
-    '🚀 ~ file: WalletModal.tsx:26 ~ WalletModal ~ connectors',
-    connectors,
-  )
 
   useEffect(() => {
     ;(isConnected || error) && closeModal()

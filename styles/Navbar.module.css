@@ -43,6 +43,13 @@
     border: 1px solid rgba(255, 196, 196, 0.5);
 }
 
+.connectButtonCoinbase {
+    background: linear-gradient(90deg, #4036f5 0%, #2003fb 100%) !important;
+    border: 1px solid rgba(21, 0, 255, 0.5);
+    border-radius: 10px;
+    width: 147px;
+}
+
 .connectButton {
     background: linear-gradient(90deg, #bc000f 0%, #7d0000 100%) !important;
     border: 1px solid rgba(255, 0, 0, 0.5);

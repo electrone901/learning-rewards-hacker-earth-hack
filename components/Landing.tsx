@@ -23,38 +23,10 @@ import { MyAppContext } from '../pages/_app'
 import { ethers } from 'ethers'
 import { ABI } from '../abis/ABI'
 import { disconnect } from 'process'
-// import ConnectWallet from './web3/ConnectWallet'
-// import ConnectWallet from '@components/web3/ConnectWallet'
+
 const getEthereumObject = () => window.ethereum
 
-/*
- * This function returns the first linked account found.
- * If there is no account linked, it will return null.
- */
-const findAccount = async () => {
-  //   try {
-  //     const ethereum = getEthereumObject()
-  //     /*
-  //      * First make sure we have access to the Ethereum object.
-  //      */
-  //     if (!ethereum) {
-  //       console.error('Make sure you have Metamask!')
-  //       return null
-  //     }
-  //     const accounts = await ethereum.request({ method: 'eth_accounts' })
-  //     if (accounts.length !== 0) {
-  //       const account = accounts[0]
-  //       //window.localStorage.setItem('ACCOUNT', account)
-  //       return account
-  //     } else {
-  //       console.error('No authorized account found')
-  //       return null
-  //     }
-  //   } catch (error) {
-  //     console.error(error)
-  //     return null
-  //   }
-}
+const findAccount = async () => {}
 
 export function Landing() {
   const [isLoading, setLoading] = useState<boolean>(false)
@@ -68,6 +40,7 @@ export function Landing() {
     signer,
     setSigner,
   } = useContext(MyAppContext)
+  console.log('____contract', contract)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -143,11 +116,6 @@ export function Landing() {
     }
   }
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const test = () => {
-    console.log('🚀 ~ file: ConnectWallet.tsx:37 ~ test ~ test')
-  }
-
   return (
     <div className={styles.container}>
       <main className={styles.landing}>
@@ -160,18 +128,10 @@ export function Landing() {
               Please connect your wallet to continue.
             </Text>
           </VStack>
-          <ConnectWallet />
-
-          {/* <Button onClick={test} className={styles.connectButton}>
-            WORK
-          </Button>
-
-          <Button
-            onClick={() => connectWallet()}
-            className={styles.connectButton}
-          >
-            Connect Wallet
+          {/* <Button onClick={connectWallet} className={styles.connectButton}>
+            Connect with Metamask
           </Button> */}
+          <ConnectWallet />
         </VStack>
         <Box className={styles.ellipseOne}></Box>
       </main>
