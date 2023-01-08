@@ -1,6 +1,16 @@
-import { Box, Button, useColorModeValue, Text, Input } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  useColorModeValue,
+  VStack,
+  Spinner,
+  useToast,
+  Text,
+  Input,
+} from '@chakra-ui/react'
 import { NFTStorage, File } from 'nft.storage'
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { toastCreateTaskSuccess } from '@utils/toast'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
 import CreateContentFirstPart from '@components/CreateContentFirstPart'
@@ -23,7 +33,6 @@ const CustomeInput = ({ setTempOption }) => {
 
 function Create() {
   const { account, contract } = useContext(MyAppContext)
-
   const dummyData = [
     {
       question: 'How do you connect to the Klaytn blockchain?',
@@ -70,6 +79,8 @@ function Create() {
   const [experiencePoint, setExperiencePoint] = useState<string>('')
   const [subscriptionFee, setSubscriptionFee] = useState<string>('')
   const router = useRouter()
+  const toast = useToast()
+  const [isLoading, setLoading] = useState<boolean>(false)
 
   // Second part
   const [data, setData] = useState<any>([])
@@ -81,33 +92,20 @@ function Create() {
   const [optionArray, setOptionArray] = useState<any>([])
   const [optionList, setOptionList] = useState<any>([])
 
-  const run = async () => {
-    if (!account || !contract) alert('Please connect your wallet!')
-
-    try {
-      
-        const contractBalance = await contract.contractBalance()
-        const getBalance = BigInt(parseInt(contractBalance, 10))
-        console.log("This contract has: ", getBalance)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   const SaveAllAndPublish = async () => {
     if (!account || !contract) alert('Please connect your wallet!')
-
     try {
       setCreatingQuiz(true)
+      setLoading(true)
       const rewardAmountInt = Number(rewardAmount)
       const subscriptionFeeInt = Number(subscriptionFee)
 
       const obj = {
         image: image
           ? image
-          : 'https://images.unsplash.com/photo-1639737496523-ea268d39924d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
+          : 'https://images.unsplash.com/photo-1534705867302-2a41394d2a3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
 
-        title: title ? title : 'Getting Started with Klaynt Basics',
+        title: title ? title : 'KLAYTN 2022: A YEAR QUIZ',
         description: description
           ? description
           : 'Klaynt Basics concepts to get started in your journey with Klaynt.',
@@ -117,7 +115,7 @@ function Create() {
         creator: account
           ? account
           : '0xf4eA652F5B7b55f1493631Ea4aFAA63Fe0acc27C',
-        subscriptionFee: subscriptionFee ? subscriptionFee : '0.20 USDC',
+        subscriptionFee: subscriptionFee ? subscriptionFee : '0.2',
         questionsArray: data ? data : dummyData,
       }
 
@@ -132,51 +130,27 @@ function Create() {
         const url = metadata?.url.substring(7)
         const fullUrl = `https://cloudflare-ipfs.com/ipfs/${url}`
         console.log('fullUrl', fullUrl)
-
+        const isProject = false
+        const arrayAnswers = [1, 4, 1]
         const saveToContract = await contract.addTask(
           fullUrl,
           rewardAmountInt,
           subscriptionFeeInt,
+          isProject,
+          arrayAnswers,
           { value: ethers.utils.parseEther(rewardAmount) },
         )
+
         const tx = await saveToContract.wait()
-        console.log('___tx__', tx)
-        const transationId = tx?.to
-        console.log('transationId', transationId)
-
-        const event = contract.on("taskAdded")
-
-
-        console.log(event)
-
-
-        // const getAllTasks = await contract.getAllTasks()
-        // console.log("All Tasks are here: ", getAllTasks)
-
-        //here we need to allow for selection of task Id and the subscriptionFee
-        // const subscribe = await contract.subscribe(6, 
-        //   { value: ethers.utils.parseEther(subscriptionFee) })
-        //   console.log("_______", subscribe)
-
-        // const completeTask = await contract.completeTask("0xab9c475dE99c213DB8c9CAaE86478CCEA367f508", 24)
-        // console.log("This task was completed. Now the winner can get his reward", completeTask)
-
-        // const contractBalance = await contract.contractBalance()
-        // const getBalance = BigInt(parseInt(contractBalance, 10))
-        // console.log("This contract has: ", getBalance)
-
-        //   let getAllTasksByWinner = await contract.getAllTasksByWinner("0xab9c475dE99c213DB8c9CAaE86478CCEA367f508")
-        // getAllTasksByWinner = getAllTasksByWinner.toString()
-        // console.log("This winner has: ", getAllTasksByWinner)
-
-        // let getAllTasksByOwner = await contract.getAllTasksByOwner("0xab9c475dE99c213DB8c9CAaE86478CCEA367f508")
-        // getAllTasksByOwner = getAllTasksByOwner.toString()
-
-        // const completeTask = await contract.completeTask("0x4054d8969a12209b6d3C9Cd99377C759303823CD", 1)
-        // await completeTask.wait()
-        // let transferReward = await contract.transferReward(1)
-
-
+        if (tx?.to) {
+          toastCreateTaskSuccess(toast)
+          console.log('___tx__', tx)
+          const transationId = tx?.to
+          console.log('transationId', transationId)
+          const event = contract.on('taskAdded')
+          console.log(event)
+          router.push('/tasks')
+        }
 
         // on  success display a button 'See Transaction'
         //  href https://baobab.scope.klaytn.com/tx/ + txID 0x014ce3aa8bd20739287837f03d7319159310028e21a6b43f8b90a9ea540279a8
@@ -235,16 +209,15 @@ function Create() {
     )
   }
 
-
   return (
     <div style={{ padding: '10rem 10rem ' }}>
       <Text className={styles.title}>
         Create and earn rewards every time a person uses your project, quiz, or
         tutorial.*{' '}
       </Text>
+
       <div style={{ display: 'flex' }}>
         <Box bg="gray" w="50%" p={10} color="white" minHeight="50rem">
-          <button onClick={run}>Run</button>
           {showFirstPart ? (
             <CreateContentFirstPart
               setShowFirstPart={setShowFirstPart}
@@ -328,6 +301,17 @@ function Create() {
               >
                 Save All & Publish
               </Button>
+              <br />
+              <br />
+
+              {isLoading ? (
+                <VStack className={styles.loadingContainer}>
+                  <Spinner color="white" size="xl" />
+                  <p>Uploading....</p>
+                </VStack>
+              ) : (
+                ''
+              )}
             </>
           )}
         </Box>
@@ -358,10 +342,10 @@ function Create() {
 
                 {question.answers
                   ? question.answers.map((answer, idx) => (
-                    <p key={idx} style={{ paddingLeft: '.5rem' }}>
-                      {`${idx + 1}.-`} {answer}
-                    </p>
-                  ))
+                      <p key={idx} style={{ paddingLeft: '.5rem' }}>
+                        {`${idx + 1}.-`} {answer}
+                      </p>
+                    ))
                   : ''}
               </div>
             ))

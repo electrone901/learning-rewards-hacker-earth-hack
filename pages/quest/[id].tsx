@@ -13,7 +13,7 @@ import Quiz from '../../components/Quiz'
 import { useTron } from '@components/TronProvider'
 import styles from '@styles/Quest.module.css'
 import { useRouter } from 'next/router'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { CheckCircleIcon, LockIcon } from '@chakra-ui/icons'
 import withTransition from '@components/withTransition'
 import Error404 from '@components/404'
@@ -25,6 +25,7 @@ import {
   toastVerifyFailure,
   toastVerifySuccess,
 } from '@utils/toast'
+import { MyAppContext } from 'pages/_app'
 
 const JOURNEY_API_URL =
   process.env.NEXT_PUBLIC_ENV === 'prod'
@@ -32,8 +33,11 @@ const JOURNEY_API_URL =
     : process.env.NEXT_PUBLIC_API_DEV
 
 function Quest() {
-  const { address } = useTron()
+  const { selectedTask, contract, isQuestSuccessfullycompleted } = useContext(
+    MyAppContext,
+  )
 
+  const { address } = useTron()
   const toast = useToast()
   const router = useRouter()
   const { id: questId } = router.query
@@ -181,19 +185,23 @@ function Quest() {
     setStartLoading(false)
   }, [address, fetchUser, fetchedUser, questId])
 
-  // claim quest reward
+  // claim quest reward  transferReward(taskId)
+
   const claimReward = useCallback(async () => {
     setClaimLoading(true)
     try {
-      const response = await fetch(
-        `${JOURNEY_API_URL}/api/claim/${questId}/${address}`,
-      )
-      if (response.status === 200) {
-        toastClaimSuccess(toast)
-        await updateQuestStatus(true)
-        await fetchQuest()
-      } else {
-        toastClaimFailure(toast)
+      if (contract) {
+        const id = selectedTask.id
+        console.log('🚀 ~ file: [id].tsx:199 ~ claimReward ~ id', id)
+        // const res = await contract.claimReward()
+
+        // if (response.status === 200) {
+        //   toastClaimSuccess(toast)
+        //   await updateQuestStatus(true)
+        //   await fetchQuest()
+        // } else {
+        //   toastClaimFailure(toast)
+        // }
       }
     } catch (err) {
       console.log(err)
@@ -256,80 +264,14 @@ function Quest() {
 
   // if (!fetchedUser || !fetchedQuest) return <Error404 />;
 
-  const data = [
-    {
-      image:
-        'https://img.freepik.com/premium-vector/funny-cartoon-emoji-design-happy-smile-face-vector-illustration-new-nft-collection_155957-1298.jpg?w=2000',
-      name: 'Aleo Basics',
-      description:
-        'Aleo Basics concepts to get started in your journey with Aleo.',
-      nft_reward: '0.99 USDC',
-      nft_badge_img: '',
-      points: '100LE',
-      creator: '',
-      material: 'json',
-      completed_users: [],
-      id: 1,
-    },
-    {
-      image:
-        'https://media.nft.crypto.com/4c0476f6-5e01-42d4-b5a2-3ae9a4d5b90a/original.jpeg',
-      name: 'Aleo Basics',
-      description:
-        'Aleo Basics concepts to get started in your journey with Aleo.',
-      nft_reward: '0.99 USDC',
-      nft_badge_img: '',
-      points: '100LE',
-      creator: '',
-      material: 'json',
-      completed_users: [],
-      id: 1,
-    },
-    {
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfwwTQ8KyDbviaaR3nR5uDHEnB2pxEr0gWQA&usqp=CAU',
-      name: 'Aleo Basics',
-      description:
-        'Aleo Basics concepts to get started in your journey with Aleo.',
-      nft_reward: '0.99 USDC',
-      nft_badge_img: '',
-      points: '100LE',
-      creator: '',
-      material: 'json',
-      completed_users: [],
-      id: 1,
-    },
-    {
-      image:
-        'https://media.nft.crypto.com/5908fada-92da-4b61-b34a-bfe8153bad39/original.png?d=sm-cover',
-      name: 'Aleo Basics',
-      description:
-        'Aleo Basics concepts to get started in your journey with Aleo.',
-      nft_reward: '0.99 USDC',
-      nft_badge_img: '',
-      points: '100LE',
-      creator: '',
-      material: 'json',
-      completed_users: [],
-      id: 1,
-    },
-
-    // IPFS => json upload it to it & store cid on the contract
-    // quizes,
-    // 1 questions
-    //   - multi choice
-    //   - correct answer
-
-    // bounties -  challenges
-    // tutorials: github_link
-  ]
   return (
     <VStack className={styles.container}>
-      <Quiz title="YAY" />
+      <Quiz title="YAY" selectedTask={selectedTask} />
 
-      {isQuestRewarded && (
+      {isQuestSuccessfullycompleted && (
         <Confetti width={1450} height={1000} numberOfPieces={100} />
       )}
+
       {fetchedQuest && (
         <HStack alignItems="flex-start" gap={6}>
           <VStack
@@ -408,25 +350,26 @@ function Quest() {
 
             <Box className={styles.divider} />
             <VStack pt=".5rem" gap={2}>
-              {data.map((item, stepIdx) => (
-                <QuestStep
-                  key={stepIdx}
-                  stepNum={stepIdx + 1}
-                  title={item.name}
-                  user={fetchedUser}
-                  startUrl={item.image}
-                  description={item.description}
-                  verifyQuest={verifyQuest}
-                  startQuest={startQuest}
-                  connectTwitter={connectTwitter}
-                  isStartLoading={isStartLoading}
-                  isVerifyLoading={isVerifyLoading}
-                  isCompleted={currentStep > stepIdx}
-                  isLocked={currentStep < stepIdx}
-                  isQuestActive={isQuestActive}
-                  // isTwitter={isTwitter}
-                />
-              ))}
+              {selectedTask?.questionsArray &&
+                selectedTask.questionsArray.map((item, stepIdx) => (
+                  <QuestStep
+                    key={stepIdx}
+                    stepNum={stepIdx + 1}
+                    title={item.name}
+                    user={fetchedUser}
+                    startUrl={item.image}
+                    description={item.description}
+                    verifyQuest={verifyQuest}
+                    startQuest={startQuest}
+                    connectTwitter={connectTwitter}
+                    isStartLoading={isStartLoading}
+                    isVerifyLoading={isVerifyLoading}
+                    isCompleted={currentStep > stepIdx}
+                    isLocked={currentStep < stepIdx}
+                    isQuestActive={isQuestActive}
+                    // isTwitter={isTwitter}
+                  />
+                ))}
             </VStack>
           </VStack>
         </HStack>

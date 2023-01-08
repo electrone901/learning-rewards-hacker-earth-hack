@@ -2,6 +2,7 @@ import { Text, VStack, HStack, Image, Box, SimpleGrid } from '@chakra-ui/react'
 import styles from '../styles/Home.module.css'
 import RewardPill from './RewardPill'
 
+
 type QuestCardProps = {
   title: string
   description: string

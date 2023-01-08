@@ -16,29 +16,36 @@ export default function QuestCard({
   return (
     <HStack
       className={isLocked ? styles.lockedQuest : styles.questCard}
-      onClick={handleClick}
+      onClick={() => handleClick(task)}
     >
       <VStack alignItems="flex-start" gap={3} opacity={isLocked ? 0.55 : 1}>
         <HStack>
-          <Box w="100px">
-            <Image
-              src={task.image ? task.image : '/coin.svg'}
-              style={{ borderRadius: '50%' }}
-              alt="task.image "
-            ></Image>
-          </Box>
+          <Image
+            borderRadius="full"
+            boxSize="120px"
+            src={task.image ? task.image : '/coin.svg'}
+            alt="Dan Abramov"
+          />
+
           <VStack alignItems="flex-start">
-            <Text className={styles.title}>{task.name}</Text>
+            <Text className={styles.title}>{task.title}</Text>
             <Text className={(styles.subtitle, styles.limitCharacters)}>
               {task.description}
             </Text>
             <HStack>
-              <RewardPill imageUrl="/l.png" label={task.level} />
-              <RewardPill imageUrl="/coin.png" label={task.nft_reward} />
-              <RewardPill imageUrl="/badgeicon.png" label="100Points" />
+              <RewardPill imageUrl="/l.png" label={`Level: ${task.level}`} />
+              {/* <RewardPill imageUrl="/coin.png" label={task.reward} /> */}
+              <RewardPill
+                imageUrl="/coin.png"
+                label={`Rewards: ${task.reward} klay`}
+              />
               <RewardPill
                 imageUrl="/badgeicon.png"
-                label={`Entry fee: ${task.fee}`}
+                label={task.experiencePoint}
+              />
+              <RewardPill
+                imageUrl="/badgeicon.png"
+                label={`Entry fee: ${task.price} klay`}
               />
             </HStack>
           </VStack>

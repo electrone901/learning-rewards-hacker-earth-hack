@@ -41,6 +41,10 @@ export const MyAppContext = React.createContext({
   setSigner: undefined,
   allTasks: undefined,
   setAllTasks: undefined,
+  selectedTask: undefined,
+  setSelectedTask: undefined,
+  isQuestSuccessfullycompleted: undefined,
+  setIsQuestSuccessfullycompleted: undefined,
 })
 
 export default function App({ Component, pageProps, router }: AppProps) {
@@ -50,7 +54,11 @@ export default function App({ Component, pageProps, router }: AppProps) {
   const [provider, setProvider] = useState('')
   const [signer, setSigner] = useState('')
   const [allTasks, setAllTasks] = useState('')
-  // const [balance, setBalance] = useState('')
+  const [selectedTask, setSelectedTask] = useState('')
+  const [
+    isQuestSuccessfullycompleted,
+    setIsQuestSuccessfullycompleted,
+  ] = useState(false)
 
   useEffect(() => setMounted(true), [])
   if (!mounted) return null
@@ -68,6 +76,10 @@ export default function App({ Component, pageProps, router }: AppProps) {
           setSigner,
           allTasks,
           setAllTasks,
+          selectedTask,
+          setSelectedTask,
+          isQuestSuccessfullycompleted,
+          setIsQuestSuccessfullycompleted,
         }}
       >
         <Head>

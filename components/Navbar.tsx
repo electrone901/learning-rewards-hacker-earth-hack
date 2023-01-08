@@ -40,6 +40,7 @@ const Navbar = ({ account, setAccount }) => {
             <Link href="/tasks">
               <Text>Tasks</Text>
             </Link>
+            
 
             <Link href="/create">
               <Text>Create Tasks</Text>

@@ -3,6 +3,7 @@ import { handleConnect } from '@utils/web3'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import withTransition from './withTransition'
+import axios from 'axios'
 
 function CreateContentFirstPart({
   setShowFirstPart,
@@ -15,7 +16,6 @@ function CreateContentFirstPart({
   setExperiencePoint,
   setSubscriptionFee,
 }) {
- 
   // const [tittle, setTitle] = useState<string>('')
   // const [image, setImage] = useState<string>('')
   // const [description, setDescription] = useState<string>('')
@@ -24,11 +24,29 @@ function CreateContentFirstPart({
   // const [experiencePoint, setExperiencePoint] = useState<string>('')
 
   const handleImage = async (event) => {
-    setImage(event.target.files[0])
+    const updataData = new FormData()
+    updataData.append('file', event.target.files[0])
+    const res = await axios.post(
+      'https://api.pinata.cloud/pinning/pinFileToIPFS',
+      updataData,
+      {
+        maxContentLength: 'Infinity',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+
+          pinata_api_key: 'c7edcfef00c948c3c82a',
+          pinata_secret_api_key:
+            'e666f9213127e62705a9429789443dff7b2069ed868ce095be04573fe3de0809',
+        },
+      },
+    )
+    setImage('https://gateway.pinata.cloud/ipfs/' + res.data.IpfsHash)
   }
 
   return (
     <div style={{ width: '80%' }}>
+      {image ? <img src={image} alt="pet" className="img-preview" /> : ''}
+
       <div style={{ paddingTop: '.5rem', paddingBottom: '1rem' }}>
         <label htmlFor="formFileImage5" className={styles.upload}>
           + Upload Image

@@ -178,13 +178,14 @@
 }
 
 .loadingContainer {
-    min-height: 100vh;
+    min-height: 200px;
     padding: 4rem 0;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #454242;
 }
 
 .mobileText {

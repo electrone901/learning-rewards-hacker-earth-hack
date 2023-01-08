@@ -1,24 +1,62 @@
 import { useState, useContext, useEffect } from 'react'
-import { Text, VStack, HStack, Image, Box, SimpleGrid } from '@chakra-ui/react'
+import { Text, SimpleGrid } from '@chakra-ui/react'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
 import withTransition from '@components/withTransition'
 import { MyAppContext } from '../pages/_app'
-import QuestCard from '@components/Card'
 import PartnerCard from '@components/PartnerCard'
 
-// tasks we need all tasks, account, onclick we need to pass the taskID
+import { ethers } from 'ethers'
+
 function Explore() {
   const router = useRouter()
 
-  const { account, contract, allTasks, setAllTasks } = useContext(MyAppContext)
-  console.log('🚀 ~ file: tasks.tsx:15 ~ Explore ~ contract', contract)
-  console.log('🚀 ~ file: tasks.tsx:15 ~ Explore ~ allTasks', allTasks)
+  const {
+    account,
+    contract,
+    allTasks,
+    setAllTasks,
+    setAccount,
+    setSelectedTask,
+    selectedTask,
+  } = useContext(MyAppContext)
 
   const getAllTasks = async (contract) => {
-    const allTasks = await contract?.getAllTasks()
+    const data = []
+    const allTasks = await contract.getAllTasks()
+    console.log('🚀 ~ file: tasks.tsx:21 ~ getAllTasks ~ allTasks', allTasks)
     setAllTasks(allTasks)
-    console.log('🚀Landing.tsx:79 ~ getAllTasks ~ allTasks', allTasks)
+
+    for (let i = 0; i < allTasks.length; i++) {
+      const obj = {}
+      const IPFSCid = allTasks[i].IPFSCid
+      const completed = allTasks[i].completed
+      const id = allTasks[i].id
+      const owner = allTasks[i].owner
+      const price = allTasks[i].price.toString()
+
+      const weiValue = allTasks[i].reward.toString()
+      const reward = ethers.utils.formatEther(weiValue)
+
+      let getNFTStorageData = await fetch(IPFSCid)
+      let temp = await getNFTStorageData.json()
+      const task = JSON.parse(temp.description)
+      obj.completed = completed
+      obj.id = id
+      obj.owner = owner
+      obj.price = price
+      obj.reward = reward
+      obj.description = task.description
+      obj.experiencePoint = task.experiencePoint
+      obj.image = task.image
+      obj.level = task.level
+      obj.questionsArray = task.questionsArray
+      obj.rewardAmount = task.rewardAmount
+      obj.subscriptionFee = task.subscriptionFee
+      obj.title = task.title
+      data.unshift(obj)
+    }
+    setAllTasks(data)
   }
 
   useEffect(() => {
@@ -27,112 +65,9 @@ function Explore() {
     }
   }, [])
 
-  // here fetch all tasks
-  const data = [
-    {
-      image:
-        'https://img.freepik.com/premium-vector/funny-cartoon-emoji-design-happy-smile-face-vector-illustration-new-nft-collection_155957-1298.jpg?w=2000',
-      name: 'Aleo Basics',
-      description:
-        'Aleo Basics concepts to get started in your journey with Aleo.',
-      nft_reward: '0.99 KLAY',
-      nft_badge_img: '',
-      points: '100LE',
-      creator: '',
-      material: 'json',
-      completed_users: [],
-      id: 1,
-      level: 'Beginner',
-    },
-    {
-      image:
-        'https://media.nft.crypto.com/4c0476f6-5e01-42d4-b5a2-3ae9a4d5b90a/original.jpeg',
-      name: 'Aleo Smart Contracts',
-      description:
-        'Aleo Basics concepts to get started in your journey with Aleo.',
-      nft_reward: '0.99 KLAY',
-      nft_badge_img: '',
-      points: '100LE',
-      creator: '',
-      material: 'json',
-      completed_users: [],
-      id: 1,
-      level: 'Medium',
-    },
-    {
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfwwTQ8KyDbviaaR3nR5uDHEnB2pxEr0gWQA&usqp=CAU',
-      name: 'Hello World Aleo!',
-      description:
-        'Aleo Basics concepts to get started in your journey with Aleo.',
-      nft_reward: '0.99 KLAY',
-      nft_badge_img: '',
-      points: '100LE',
-      creator: '',
-      material: 'json',
-      completed_users: [],
-      id: 1,
-      level: 'Advanced',
-    },
-    {
-      image:
-        'https://media.nft.crypto.com/5908fada-92da-4b61-b34a-bfe8153bad39/original.png?d=sm-cover',
-      name: 'Advance Aleo!',
-      description:
-        'Aleo Basics concepts to get started in your journey with Aleo. s Marieke mentioned recently that we need to go back to real utility, especially in the current turmoil. Our goal is to solve a long-lasting pain: Recruitment, that exists in all companies, with web3 technology',
-      nft_reward: '0.99 KLAY',
-      nft_badge_img: '',
-      points: '100LE',
-      creator: '',
-      material: 'json',
-      completed_users: [],
-      id: 1,
-      level: 'Beginner',
-      fee: '10',
-    },
-    {
-      image:
-        'https://media.nft.crypto.com/5908fada-92da-4b61-b34a-bfe8153bad39/original.png?d=sm-cover',
-      name: 'Advance Aleo!',
-      description:
-        'Aleo Basics concepts to get started in your journey with Aleo. s Marieke mentioned recently that we need to go back to real utility, especially in the current turmoil. Our goal is to solve a long-lasting pain: Recruitment, that exists in all companies, with web3 technology',
-      nft_reward: '0.99 USDC',
-      nft_badge_img: '',
-      points: '100LE',
-      creator: '',
-      material: 'json',
-      completed_users: [],
-      id: 1,
-      level: 'Beginner',
-    },
-    {
-      image:
-        'https://media.nft.crypto.com/5908fada-92da-4b61-b34a-bfe8153bad39/original.png?d=sm-cover',
-      name: 'Advance Aleo!',
-      description:
-        'Aleo Basics concepts to get started in your journey with Aleo. s Marieke mentioned recently that we need to go back to real utility, especially in the current turmoil. Our goal is to solve a long-lasting pain: Recruitment, that exists in all companies, with web3 technology',
-      nft_reward: '0.99 USDC',
-      nft_badge_img: '',
-      points: '100LE',
-      creator: '',
-      material: 'json',
-      completed_users: [],
-      id: 1,
-      level: 'Beginner',
-    },
-
-    // IPFS => json upload it to it & store cid on the contract
-    // quizes,
-    // 1 questions
-    //   - multi choice
-    //   - correct answer
-
-    // bounties -  challenges
-    // tutorials: github_link
-  ]
-
-  function handleClick(e) {
-    e.preventDefault()
+  function handleClick(task) {
+    console.log('1 task', task)
+    setSelectedTask(task)
     router.push('/quest/V2zbf8iYGGGzFnkXQ6tB')
   }
 
@@ -141,9 +76,13 @@ function Explore() {
       <main className={styles.main}>
         <Text className={styles.title}>Explore Partners</Text>
         <SimpleGrid columns={2} gap={5} pt={10}>
-          {data.map((task, idx) => (
-            <PartnerCard task={task} key={idx} handleClick={handleClick} />
-          ))}
+          {allTasks?.length > 0 ? (
+            allTasks.map((task, idx) => (
+              <PartnerCard task={task} key={idx} handleClick={handleClick} />
+            ))
+          ) : (
+            <h2>Loading....</h2>
+          )}
         </SimpleGrid>
       </main>
     </div>

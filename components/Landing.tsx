@@ -52,6 +52,56 @@ export function Landing() {
     allTasks,
     setAllTasks,
   } = useContext(MyAppContext)
+  // console.log('__allTasks LANDING', allTasks)
+
+  const getAllTasks = async (contract) => {
+    const data = []
+
+    const allTasks = await contract.getAllTasks()
+    setAllTasks(allTasks)
+
+    for (let i = 0; i < allTasks.length; i++) {
+      const obj = {}
+      const IPFSCid = allTasks[i].IPFSCid
+      const completed = allTasks[i].completed
+      const id = allTasks[i].id
+      const owner = allTasks[i].owner
+      const price = allTasks[i].price.toString()
+      const reward = allTasks[i].reward.toString()
+
+      console.log(
+        'IPFSCid, completed',
+        IPFSCid,
+        completed,
+        id,
+        owner,
+        price,
+        reward,
+      )
+
+      let getNFTStorageData = await fetch(IPFSCid)
+      let temp = await getNFTStorageData.json()
+      const task = JSON.parse(temp.description)
+      console.log('task', task)
+      obj.completed = completed
+      obj.id = id
+      obj.owner = owner
+      obj.price = price
+      obj.reward = reward
+      obj.description = task.description
+      obj.experiencePoint = task.experiencePoint
+      obj.image = task.image
+      obj.level = task.level
+      obj.questionsArray = task.questionsArray
+      obj.rewardAmount = task.rewardAmount
+      obj.subscriptionFee = task.subscriptionFee
+      obj.title = task.title
+      data.push(obj)
+    }
+
+    console.log('ARRAY data', data)
+    setAllTasks(data)
+  }
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -67,7 +117,7 @@ export function Landing() {
         const providerTemp = new ethers.providers.Web3Provider(window.ethereum)
         setProvider(providerTemp)
         const { chainId } = await providerTemp.getNetwork()
-        const deployedContract = '0x7b2758469161F93372Fd20f99A7bbA2059E7CBC5'
+        const deployedContract = '0x6239B8e5dFE71564f580FDA36609A6D96229B3B7'
         const signer = providerTemp.getSigner()
         setSigner(signer)
 
@@ -103,12 +153,6 @@ export function Landing() {
       console.error(error)
     }
   }
-
-  // const getAllTasks = async (contract) => {
-  //   const allTasks = await contract.getAllTasks()
-  //   setAllTasks(allTasks)
-  //   console.log('🚀Landing.tsx:79 ~ getAllTasks ~ allTasks', allTasks)
-  // }
 
   return (
     <div className={styles.container}>

@@ -1,3 +1,12 @@
+export function toastCreateTaskSuccess(toast: any) {
+  toast({
+    title: "Task creation success!",
+    description: "We've successfully created your quest task.",
+    status: "success",
+    duration: 5000,
+    isClosable: true,
+  });
+}
 export function toastVerifySuccess(toast: any) {
   toast({
     title: "Verification success!",

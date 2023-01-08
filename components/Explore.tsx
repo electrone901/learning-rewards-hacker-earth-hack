@@ -15,6 +15,7 @@ import {
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
 import withTransition from '@components/withTransition'
+import ProjectDetails from '@components/ProjectDetails'
 import QuestCard from './QuestCard'
 import { useEffect, useState } from 'react'
 
@@ -61,7 +62,6 @@ function Explore() {
   //   )
 
   // if (fetchedQuests.length === 0) return <Error404 />
-  console.log('🚀 ~ file: Explore.tsx:50 ~ Explore ~ Error404')
 
   function getStarted(e) {
     e.preventDefault()
@@ -97,6 +97,12 @@ function Explore() {
             </Button>
           </div>
         </div>
+
+        {/*  */}
+
+        <ProjectDetails />
+        {/* old */}
+
         {/* HOW IT WORKS*/}
         <Center py={12}>
           <Flex minWidth="max-content" alignItems="center" gap="6">

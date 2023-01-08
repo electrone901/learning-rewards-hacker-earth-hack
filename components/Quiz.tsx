@@ -1,7 +1,10 @@
-import { Button } from '@chakra-ui/react'
+import { Button, useToast } from '@chakra-ui/react'
+import { toastClaimFailure, toastClaimSuccess } from '@utils/toast'
+
 import styles from '../styles/Home.module.css'
 import RewardPill from './RewardPill'
-import { use, useEffect, useState } from 'react'
+import { use, useEffect, useState, useContext } from 'react'
+import { MyAppContext } from 'pages/_app'
 
 type QuestCardProps = {
   title: string
@@ -96,104 +99,40 @@ function ScoreArea(props) {
   )
 }
 
-export default function Quiz({ title }: QuestCardProps) {
+export default function Quiz({ selectedTask, title }: QuestCardProps) {
   const [current, setCurrent] = useState<number>(0)
   const [dataSet, setDataSet] = useState<any[]>([])
   const [displayResults, setDisplayResults] = useState<boolean>(false)
   const [correct, setCorrect] = useState<number>(0)
   const [incorrect, setIncorrect] = useState<number>(0)
+  const toast = useToast()
+  console.log('🚀 ~ file: Quiz.tsx:109 ~ Quiz ~ toast', toast)
+  const { contract, setIsQuestSuccessfullycompleted, account } = useContext(
+    MyAppContext,
+  )
 
   useEffect(() => {
-    const dataSetTemp = [
-      {
-        question: 'What is 8 x 1?',
-        answers: ['1', '8', '16', '9'],
-        correct: 1,
-      },
-      {
-        question: 'Who is Steve Jobs?',
-        answers: [
-          'CEO of Microsoft',
-          'Barber in NY',
-          'Movie Star',
-          'CEO of Apple',
-        ],
-        correct: 3,
-      },
-      // {
-      //   question: 'Metallica is a ____ band',
-      //   answers: ['Blues', 'Hard-Rock', 'Jazz', 'Metal'],
-      //   correct: 3,
-      // },
-      // {
-      //   question: 'IS is a ____',
-      //   answers: ['Word', 'Band', 'Terror Group', 'Brand'],
-      //   correct: 2,
-      // },
-      // {
-      //   question: 'Who was Einstein',
-      //   answers: [
-      //     'A Scientist',
-      //     'A Dentist',
-      //     'A Serial Killer',
-      //     'None of the above',
-      //   ],
-      //   correct: 0,
-      // },
-      // {
-      //   question: 'JavaScript can be used in ____ development',
-      //   answers: ['Back-End', 'Front-End', 'ReactJS', 'All of the Above'],
-      //   correct: 3,
-      // },
-      // {
-      //   question: 'Hitler was a',
-      //   answers: [
-      //     'Mass Murderer',
-      //     'Dictator',
-      //     'Jew',
-      //     'None of the above',
-      //     'All of the above',
-      //   ],
-      //   correct: 4,
-      // },
-      // {
-      //   question: 'Korn is a',
-      //   answers: ['Nu-Metal band', 'Religion', 'Singer'],
-      //   correct: 0,
-      // },
-      // {
-      //   question: 'Windows computers are',
-      //   answers: ['Horrible', 'Great', 'Cheap', 'Invented by Bill Gates'],
-      //   correct: 3,
-      // },
-      // {
-      //   question: 'The BigBan stands in',
-      //   answers: ['Egypt', 'London', 'Amsterdam', 'NewYork'],
-      //   correct: 1,
-      // },
-    ]
-
-    async function getData() {
-      // setLoading(true)
-      try {
-        // const response = await fetch(`${JOURNEY_API_URL}/api/quests`);
-        setDataSet(dataSetTemp)
-      } catch (err) {
-        console.log(err)
-      }
-      // setLoading(false)
-    }
-    getData()
+    if (selectedTask?.questionsArray) setDataSet(selectedTask.questionsArray)
+    // toastClaimSuccess(toast)
   }, [])
 
   const isNinetyOrGreater = () => {
     const totalQuestions = dataSet.length - 1
     const percentage = (90 * totalQuestions) / 100
+    dataSet
+    if (dataSet.length > 0) {
+      if (current == dataSet.length) {
+        if (correct >= percentage) {
+          setIsQuestSuccessfullycompleted(true)
+        }
+      }
+    }
+
     return percentage
   }
 
   const handleClick = (choice) => {
-    if (choice == dataSet[current].correct) {
+    if (choice + 1 == dataSet[current].correct) {
       setCorrect(correct + 1)
     } else {
       setIncorrect(incorrect + 1)
@@ -205,8 +144,30 @@ export default function Quiz({ title }: QuestCardProps) {
       setCurrent(current + 1)
     }
   }
-  const claimRewards = () => {
-    console.log('claimRewards')
+
+  const claimRewards = async () => {
+    try {
+      if (contract) {
+        const id = selectedTask.id
+        console.log(' id', id)
+        const arrayAnswers = [1, 4, 1]
+        const response = await contract.completeQuiz(id, arrayAnswers)
+        console.log('1__response', response)
+        // const res = await contract.transferReward(id)
+        // console.log('2____  res', res)
+        // toastClaimSuccess()
+
+        // if (response.status === 200) {
+        //   await updateQuestStatus(true)
+        //   await fetchQuest()
+        // } else {
+        //   toastClaimFailure(toast)
+        // }
+      }
+    } catch (err) {
+      console.log(err)
+    }
+    // setClaimLoading(false)
   }
 
   const reset = () => {
