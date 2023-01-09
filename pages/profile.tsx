@@ -285,6 +285,12 @@ function Profile() {
     // tutorials: github_link
   ]
 
+  function handleClick(task) {
+    console.log('1 task', task)
+    // setSelectedTask(task)
+    // router.push('/quest/V2zbf8iYGGGzFnkXQ6tB')
+  }
+
   return (
     <VStack pt="9rem" pb="9rem">
       <Image
@@ -318,7 +324,7 @@ function Profile() {
 
         <SimpleGrid columns={2} gap={5} pt={10}>
           {data.map((task, idx) => (
-            <PartnerCard task={task} key={idx} />
+            <PartnerCard task={task} key={idx} handleClick={handleClick} />
           ))}
         </SimpleGrid>
       </section>

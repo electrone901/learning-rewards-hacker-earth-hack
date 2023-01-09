@@ -4,12 +4,20 @@ import RewardPill from './RewardPill'
 
 type QuestCardProps = {
   task: any
+  handleClick: (e: any) => void
   isLocked?: boolean
 }
 
-export default function QuestCard({ task, isLocked }: QuestCardProps) {
+export default function QuestCard({
+  task,
+  handleClick,
+  isLocked,
+}: QuestCardProps) {
   return (
-    <HStack className={isLocked ? styles.lockedQuest : styles.questCard}>
+    <HStack
+      className={isLocked ? styles.lockedQuest : styles.questCard}
+      onClick={() => handleClick(task)}
+    >
       <VStack alignItems="flex-start" gap={3} opacity={isLocked ? 0.55 : 1}>
         <HStack>
           <Image
