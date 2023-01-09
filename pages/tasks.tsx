@@ -1,15 +1,15 @@
-import { useState, useContext, useEffect } from 'react'
-import { Text, SimpleGrid } from '@chakra-ui/react'
-import styles from '../styles/Home.module.css'
-import { useRouter } from 'next/router'
-import withTransition from '@components/withTransition'
-import { MyAppContext } from '../pages/_app'
-import PartnerCard from '@components/PartnerCard'
+import { useState, useContext, useEffect } from "react";
+import { Text, SimpleGrid } from "@chakra-ui/react";
+import styles from "../styles/Home.module.css";
+import { useRouter } from "next/router";
+import withTransition from "@components/withTransition";
+import { MyAppContext } from "../pages/_app";
+import PartnerCard from "@components/PartnerCard";
 
-import { ethers } from 'ethers'
+import { ethers } from "ethers";
 
 function Explore() {
-  const router = useRouter()
+  const router = useRouter();
 
   const {
     account,
@@ -19,56 +19,75 @@ function Explore() {
     setAccount,
     setSelectedTask,
     selectedTask,
-  } = useContext(MyAppContext)
+  } = useContext(MyAppContext);
 
   const getAllTasks = async (contract) => {
-    const data = []
-    const allTasks = await contract.getAllTasks()
-    console.log('🚀 ~ file: tasks.tsx:21 ~ getAllTasks ~ allTasks', allTasks)
-    setAllTasks(allTasks)
+    const data = [];
+    const allTasks = await contract.getAllTasks();
+    console.log("🚀 ~ file: tasks.tsx:21 ~ getAllTasks ~ allTasks", allTasks);
+    setAllTasks(allTasks);
 
     for (let i = 0; i < allTasks.length; i++) {
-      const obj = {}
-      const IPFSCid = allTasks[i].IPFSCid
-      const completed = allTasks[i].completed
-      const id = allTasks[i].id
-      const owner = allTasks[i].owner
-      const price = allTasks[i].price.toString()
+      const obj = {};
+      const IPFSCid = allTasks[i].IPFSCid;
+      const completed = allTasks[i].completed;
+      const id = allTasks[i].id;
+      const owner = allTasks[i].owner;
+      const price = allTasks[i].price.toString();
 
-      const weiValue = allTasks[i].reward.toString()
-      const reward = ethers.utils.formatEther(weiValue)
+      const weiValue = allTasks[i].reward.toString();
+      const reward = ethers.utils.formatEther(weiValue);
 
-      let getNFTStorageData = await fetch(IPFSCid)
-      let temp = await getNFTStorageData.json()
-      const task = JSON.parse(temp.description)
-      obj.completed = completed
-      obj.id = id
-      obj.owner = owner
-      obj.price = price
-      obj.reward = reward
-      obj.description = task.description
-      obj.experiencePoint = task.experiencePoint
-      obj.image = task.image
-      obj.level = task.level
-      obj.questionsArray = task.questionsArray
-      obj.rewardAmount = task.rewardAmount
-      obj.subscriptionFee = task.subscriptionFee
-      obj.title = task.title
-      data.unshift(obj)
+      let getNFTStorageData = await fetch(IPFSCid);
+      let temp = await getNFTStorageData.json();
+      const task = JSON.parse(temp.description);
+      obj.completed = completed;
+      obj.id = id;
+      obj.owner = owner;
+      obj.price = price;
+      obj.reward = reward;
+      obj.description = task.description;
+      obj.experiencePoint = task.experiencePoint;
+      obj.image = task.image;
+      obj.level = task.level;
+      obj.questionsArray = task.questionsArray;
+      obj.rewardAmount = task.rewardAmount;
+      obj.subscriptionFee = task.subscriptionFee;
+      obj.title = task.title;
+      data.unshift(obj);
     }
-    setAllTasks(data)
-  }
+    setAllTasks(data);
+  };
 
   useEffect(() => {
     if (account && contract) {
-      getAllTasks(contract)
+      getAllTasks(contract);
     }
-  }, [])
+  }, [account]);
 
-  function handleClick(task) {
-    console.log('1 task', task)
-    setSelectedTask(task)
-    router.push('/quest/V2zbf8iYGGGzFnkXQ6tB')
+  async function handleClick(task) {
+    // const subscriptions = await contract.getSubscriptions[account];
+    // let member = false
+    // console.log(subscriptions);
+    // const subscription = () => {
+    //   for (let i = 0; i < subscriptions.length; i++) {
+    //     if (subscriptions[i] === task.id - 1) {
+    //       console.log("true");
+    //       member = true
+    //     } else {
+    //       console.log("false");
+    //       member = false;
+    //     }
+    //   }
+    // };
+    // console.log(subscription);
+    // if (!subscription) {
+    //   await contract.subscribe(task.id - 1);
+    // } else {
+    //   console.log("1 task", task);
+      setSelectedTask(task);
+      router.push("/quest/V2zbf8iYGGGzFnkXQ6tB");
+    }
   }
 
   return (
@@ -86,7 +105,7 @@ function Explore() {
         </SimpleGrid>
       </main>
     </div>
-  )
+  );
 }
 
-export default withTransition(Explore)
+export default withTransition(Explore);
