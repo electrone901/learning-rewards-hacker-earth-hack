@@ -2,7 +2,7 @@
 
 #### Video Demo Link: https://youtu.be/9rKopuhb9bA
 
-#### Web Demo Link: https://learning-rewardsdapp.netlify.app/
+#### Web Demo Link: https://bounty-hunter2.vercel.app/
 
 #### Name: Learning Rewards
 
