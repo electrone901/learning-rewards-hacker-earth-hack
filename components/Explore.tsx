@@ -100,7 +100,7 @@ function Explore() {
 
         {/*  */}
 
-        <ProjectDetails />
+        {/* <ProjectDetails /> */}
         {/* old */}
 
         {/* HOW IT WORKS*/}
