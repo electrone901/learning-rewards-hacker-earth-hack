@@ -50,20 +50,21 @@ const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
     provider,
   )
 
-  const getContract = async () => {
-    const tempSigner = await provider.getSigner()
+  const getContract = async (tempProvider) => {
+    console.log('____54tempProvider', tempProvider)
+    const tempSigner = await tempProvider.getSigner()
     console.log('___tempSigner', tempSigner)
     setSigner(tempSigner)
 
     if (activeChain?.id == CHAIN_ID_BAOBAB) {
       console.log('1001 network? ', activeChain.id)
       const deployedContract = '0x6239B8e5dFE71564f580FDA36609A6D96229B3B7'
-      let contract = new ethers.Contract(deployedContract, ABI, signer)
+      let contract = new ethers.Contract(deployedContract, ABI, tempSigner)
       setContract(contract)
     } else if (activeChain?.id == CHAIN_ID_MUMBAI) {
       console.log('80001 network? ', activeChain.id)
       const deployedContract = '0x84260728E9A7fEA9Ab39f8Ca583Ed0afa2557bC0'
-      let contract = new ethers.Contract(deployedContract, ABI, signer)
+      let contract = new ethers.Contract(deployedContract, ABI, tempSigner)
       setContract(contract)
     } else {
       alert('Please connect to Klaynt Test Network!')
@@ -79,13 +80,16 @@ const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
     if (data) {
       console.log('INSIDEdata', data)
       setAccount(data.address)
-      setProvider(data.connector)
+      const tempProvider = data.connector
+      setProvider(tempProvider)
       window.localStorage.setItem('isWalletConnected', true)
       const fetchedAddress = window.localStorage.getItem('ACCOUNT')
       if (!account && fetchedAddress) setAccount(fetchedAddress)
       if (account && account !== fetchedAddress)
         window.localStorage.setItem('ACCOUNT', account)
-      getContract()
+      if (tempProvider?.getSigner) {
+        getContract(tempProvider)
+      }
     }
 
     if (activeChain?.id !== CHAIN_ID_MUMBAI && switchNetwork)

@@ -211,10 +211,20 @@ function Create() {
 
   return (
     <div style={{ padding: '10rem 10rem ' }}>
-      <Text className={styles.title}>
-        Create and earn rewards every time a person uses your project, quiz, or
-        tutorial.*{' '}
-      </Text>
+      <Box style={{ padding: '1rem', fontSize: '2.2rem' }}>
+        <Text
+          className={styles.title}
+          style={{ paddingTop: '3rem', fontSize: '2.2rem' }}
+        >
+          Create your quiz and give incentives to resolve it.
+        </Text>
+        <Text
+          className={styles.title}
+          style={{ paddingTop: '1.5rem', paddingBottom: '1.5rem' }}
+        >
+          All the subscription fee is added to the reward pool.
+        </Text>
+      </Box>
 
       <div style={{ display: 'flex' }}>
         <Box bg="gray" w="50%" p={10} color="white" minHeight="50rem">
@@ -281,7 +291,11 @@ function Create() {
               <br />
               <br />
 
-              <button onClick={saveQuestion} style={{ marginTop: '0.5rem' }}>
+              <button
+                onClick={saveQuestion}
+                className={styles.savePost}
+                style={{ marginTop: '0.5rem', padding: '1rem' }}
+              >
                 Save Question
               </button>
               <br />
@@ -317,7 +331,7 @@ function Create() {
         </Box>
 
         <Box
-          bg="tomato"
+          bg="#5b10ff"
           w="50%"
           p={40}
           color="white"
