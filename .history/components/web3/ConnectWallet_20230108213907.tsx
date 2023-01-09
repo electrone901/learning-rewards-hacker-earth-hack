@@ -66,7 +66,7 @@ const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
       let contract = new ethers.Contract(deployedContract, ABI, signer)
       setContract(contract)
     } else {
-      alert('Please connect to Klaytn Test Network!')
+      alert('Please connect to Klaynt Test Network!')
     }
   }
 

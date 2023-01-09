@@ -60,15 +60,16 @@ export function Landing() {
           '🚀 ~ file: Landing.tsx:68 ~ findAccount ~ chainId',
           chainId,
         )
+        const deployedContract = '0x3f854A33eb072e355EDa90D60f646766C11A3D43'
         const signer = provider.getSigner()
         setSigner(signer)
 
         if (chainId == 1001) {
-          const deployedContract = '0x70bE996181753b9A767753C4d91030573c638295'
+          const deployedContract = '0x6239B8e5dFE71564f580FDA36609A6D96229B3B7'
           let contract = new ethers.Contract(deployedContract, ABI, signer)
           setContract(contract)
         } else if (chainId == 80001) {
-          const deployedContract = '0x1b91ec002a6db58adD892d264Bd0b7FBc377C13d'
+          const deployedContract = '0x84260728E9A7fEA9Ab39f8Ca583Ed0afa2557bC0'
           let contract = new ethers.Contract(deployedContract, ABI, signer)
           setContract(contract)
         } else {

@@ -213,15 +213,14 @@ function Create() {
     <div className={styles.container}>
       <main className={styles.titleContainer}>
         <Text className={styles.title}>
-          Create your quiz and give incentives to resolve it.
+          Create your quiz and give incentives to resolve it. {" "} 
+<></>
         </Text>
-        <Text className={styles.title}>
-          All the subscription fee is added to the reward pool.
-        </Text>
+        <Text className={styles.title}>All the subscription fee is added to the reward pool.</Text>
       </main>
 
-      <div className={styles.container}>
-        <Box className={styles.questCard}>
+      <div className={styles.main}>
+        <Box className={styles.grid}>
           {showFirstPart ? (
             <CreateContentFirstPart
               setShowFirstPart={setShowFirstPart}
@@ -244,7 +243,8 @@ function Create() {
                 size="md"
               />
 
-              <div className={styles.p}>
+              <div
+                className={styles.p}>
                 <Text mb="8px">Correct Answer</Text>
                 <Input
                   value={correctAnswer}
@@ -254,7 +254,8 @@ function Create() {
                 />
               </div>
 
-              <div className={styles.p}>
+              <div
+                className={styles.p}>
                 <Text mb="8px">Options</Text>
                 <Input
                   onChange={(e) => setTempOption(e.target.value)}
@@ -264,7 +265,9 @@ function Create() {
               </div>
 
               {optionList}
-              <button onClick={onAddBtnClick} className={styles.addBtn}>
+              <button
+                onClick={onAddBtnClick}
+                className={styles.addBtn}>
                 + Add Option
               </button>
               <br />
@@ -305,11 +308,18 @@ function Create() {
           )}
         </Box>
 
-        <Box className={styles.card}>
+        <Box
+          className={styles.card}
+        >
           {data.length ? (
             data.map((question, idx) => (
-              <div key={idx} className={styles.p}>
-                <h1 className={styles.h}>
+              <div
+                key={idx}
+                className={styles.p}
+              >
+                <h1
+                  className={styles.h}
+                >
                   {`${idx + 1}.-`} {question.question}
                 </h1>
 
@@ -323,7 +333,11 @@ function Create() {
               </div>
             ))
           ) : (
-            <h1 className={styles.h}>Your quiz will display here!</h1>
+            <h1
+              className={styles.h}
+            >
+              Your quiz will display here!
+            </h1>
           )}
         </Box>
       </div>

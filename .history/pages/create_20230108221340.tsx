@@ -211,16 +211,14 @@ function Create() {
 
   return (
     <div className={styles.container}>
-      <main className={styles.titleContainer}>
+      <main className={styles.main}>
         <Text className={styles.title}>
-          Create your quiz and give incentives to resolve it.
-        </Text>
-        <Text className={styles.title}>
-          All the subscription fee is added to the reward pool.
+          Create and earn rewards every time a person uses your project, quiz,
+          or tutorial.{" "}
         </Text>
       </main>
 
-      <div className={styles.container}>
+      <div className={styles.main}>
         <Box className={styles.questCard}>
           {showFirstPart ? (
             <CreateContentFirstPart
@@ -237,14 +235,20 @@ function Create() {
           ) : (
             <>
               {/* SECOND PART */}
-              <Text className={styles.p}>Question</Text>
+              <Text className={p}>Question</Text>
               <Input
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 size="md"
               />
 
-              <div className={styles.p}>
+              <div
+                style={{
+                  paddingLeft: "3rem",
+                  paddingTop: ".5rem",
+                  width: "80%",
+                }}
+              >
                 <Text mb="8px">Correct Answer</Text>
                 <Input
                   value={correctAnswer}
@@ -254,7 +258,13 @@ function Create() {
                 />
               </div>
 
-              <div className={styles.p}>
+              <div
+                style={{
+                  paddingLeft: "3rem",
+                  paddingTop: "1rem",
+                  width: "80%",
+                }}
+              >
                 <Text mb="8px">Options</Text>
                 <Input
                   onChange={(e) => setTempOption(e.target.value)}
@@ -264,13 +274,16 @@ function Create() {
               </div>
 
               {optionList}
-              <button onClick={onAddBtnClick} className={styles.addBtn}>
+              <button
+                onClick={onAddBtnClick}
+                style={{ marginLeft: "3rem", marginTop: "0.5rem" }}
+              >
                 + Add Option
               </button>
               <br />
               <br />
 
-              <button onClick={saveQuestion} className={styles.savePost}>
+              <button onClick={saveQuestion} style={{ marginTop: "0.5rem" }}>
                 Save Question
               </button>
               <br />
@@ -305,17 +318,33 @@ function Create() {
           )}
         </Box>
 
-        <Box className={styles.card}>
+        <Box
+          bg="tomato"
+          w="50%"
+          p={40}
+          color="white"
+          style={{ paddingTop: "3rem" }}
+        >
           {data.length ? (
             data.map((question, idx) => (
-              <div key={idx} className={styles.p}>
-                <h1 className={styles.h}>
+              <div
+                key={idx}
+                style={{
+                  paddingBottom: "1rem",
+                }}
+              >
+                <h1
+                  style={{
+                    color: "white",
+                    fontSize: "1.3rem",
+                  }}
+                >
                   {`${idx + 1}.-`} {question.question}
                 </h1>
 
                 {question.answers
                   ? question.answers.map((answer, idx) => (
-                      <p key={idx} className={styles.p}>
+                      <p key={idx} style={{ paddingLeft: ".5rem" }}>
                         {`${idx + 1}.-`} {answer}
                       </p>
                     ))
@@ -323,7 +352,14 @@ function Create() {
               </div>
             ))
           ) : (
-            <h1 className={styles.h}>Your quiz will display here!</h1>
+            <h1
+              style={{
+                color: "white",
+                fontSize: "1.3rem",
+              }}
+            >
+              Your quiz will display here!
+            </h1>
           )}
         </Box>
       </div>

@@ -220,8 +220,8 @@ function Create() {
         </Text>
       </main>
 
-      <div className={styles.container}>
-        <Box className={styles.questCard}>
+      <div className={styles.main}>
+        <Box className={styles.grid}>
           {showFirstPart ? (
             <CreateContentFirstPart
               setShowFirstPart={setShowFirstPart}
@@ -305,7 +305,7 @@ function Create() {
           )}
         </Box>
 
-        <Box className={styles.card}>
+        <Box className={styles.grid}>
           {data.length ? (
             data.map((question, idx) => (
               <div key={idx} className={styles.p}>

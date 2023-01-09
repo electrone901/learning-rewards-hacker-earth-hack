@@ -213,15 +213,15 @@ function Create() {
     <div className={styles.container}>
       <main className={styles.titleContainer}>
         <Text className={styles.title}>
-          Create your quiz and give incentives to resolve it.
+          Create your quiz and give incentives to resolve it. <>___________</>
         </Text>
         <Text className={styles.title}>
           All the subscription fee is added to the reward pool.
         </Text>
       </main>
 
-      <div className={styles.container}>
-        <Box className={styles.questCard}>
+      <div className={styles.main}>
+        <Box className={styles.grid}>
           {showFirstPart ? (
             <CreateContentFirstPart
               setShowFirstPart={setShowFirstPart}

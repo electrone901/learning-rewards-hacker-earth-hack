@@ -221,7 +221,7 @@ function Create() {
       </main>
 
       <div className={styles.container}>
-        <Box className={styles.questCard}>
+        <Box>
           {showFirstPart ? (
             <CreateContentFirstPart
               setShowFirstPart={setShowFirstPart}

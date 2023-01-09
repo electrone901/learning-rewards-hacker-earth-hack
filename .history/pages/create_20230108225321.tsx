@@ -210,7 +210,7 @@ function Create() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.main}>
       <main className={styles.titleContainer}>
         <Text className={styles.title}>
           Create your quiz and give incentives to resolve it.
