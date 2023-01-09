@@ -23,6 +23,7 @@ import { MyAppContext } from '../pages/_app'
 import { ethers } from 'ethers'
 import { ABI } from '../abis/ABI'
 import { disconnect } from 'process'
+import UAuth from '@uauth/js'
 
 const getEthereumObject = () => window.ethereum
 
@@ -39,6 +40,9 @@ export function Landing() {
     setProvider,
     signer,
     setSigner,
+    userUD,
+    setUserUD,
+    setCurrentAccountUd,
   } = useContext(MyAppContext)
   console.log('____contract', contract)
 
@@ -117,6 +121,26 @@ export function Landing() {
   //   }
   // }
 
+  const unstoppableInstance = new UAuth({
+    clientID: '80e2228d-6107-46d6-985e-44d520f38b2b',
+    redirectUri: 'https://bounty-hunter2.vercel.app/',
+    scope: 'openid wallet email profile:optional social:optional',
+  })
+
+  const unstoppableLogin = async () => {
+    const user = await unstoppableInstance.loginWithPopup()
+    console.log('MY user', user)
+    if (user) {
+      setUserUD(user)
+      setAccount(user?.idToken?.wallet_address)
+      setCurrentAccountUd(user?.idToken?.wallet_address)
+    }
+  }
+
+  const userLogOut = () => {
+    setUserUD('')
+  }
+
   return (
     <div className={styles.container}>
       <main className={styles.landing}>
@@ -129,10 +153,12 @@ export function Landing() {
               Please connect your wallet to continue.
             </Text>
           </VStack>
-          {/* <Button onClick={connectWallet} className={styles.connectButton}>
-            Connect with Metamask
-          </Button> */}
+
           <ConnectWallet />
+
+          <Button onClick={unstoppableLogin} className={styles.connectButton}>
+            Connect with Unstoppable Domains
+          </Button>
         </VStack>
         <Box className={styles.ellipseOne}></Box>
       </main>

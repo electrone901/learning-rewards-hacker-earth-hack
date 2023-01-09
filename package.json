@@ -27,6 +27,7 @@
         "@mui/icons-material": "^5.11.0",
         "@mui/material": "^5.11.0",
         "axios": "^1.1.3",
+        "@uauth/js": "^2.2.0",
         "draft-js": "^0.11.7",
         "immutable": "^4.2.2",
         "nft.storage": "^7.0.0",

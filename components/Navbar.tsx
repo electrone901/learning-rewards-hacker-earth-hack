@@ -3,15 +3,20 @@ import styles from '@styles/Navbar.module.css'
 import { Button, HStack, Image, Spinner, Text, VStack } from '@chakra-ui/react'
 import { useTron } from './TronProvider'
 import { abridgeAddress } from '@utils/abridgeAddress'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { handleDisconnect } from '@utils/web3'
 import { useRouter } from 'next/router'
+import { MyAppContext } from '../pages/_app'
 
-const Navbar = ({ account, setAccount }) => {
+const Navbar = ({ account, setAccount, userUD }) => {
+  console.log('🚀 ~ file: Navbar.tsx:12 ~ Navbar ~ userUD', userUD)
   const { address, setAddress } = useTron()
   const router = useRouter()
   const [isHover, setIsHover] = useState<boolean>(false)
+  const [isHoverUD, setIsHoverUD] = useState<boolean>(false)
   const [isLoading, setLoading] = useState<boolean>(false)
+
+  const { setUserUD } = useContext(MyAppContext)
 
   if (!account) return
 
@@ -22,9 +27,12 @@ const Navbar = ({ account, setAccount }) => {
   function onClickDisconnect() {
     window.localStorage.removeItem('ACCOUNT')
     window.localStorage.setItem('isWalletConnected', 'false')
-
     setAccount(undefined)
     router.push('/')
+  }
+
+  const userLogOut = () => {
+    setUserUD('')
   }
 
   return (
@@ -67,6 +75,23 @@ const Navbar = ({ account, setAccount }) => {
                   'Disconnect'
                 ) : (
                   abridgeAddress(account)
+                )}
+              </Button>
+            )}
+
+            {userUD && (
+              <Button
+                className={styles.addressPill}
+                onClick={userLogOut}
+                onMouseEnter={() => setIsHoverUD(true)}
+                onMouseLeave={() => setIsHoverUD(false)}
+              >
+                {isLoading ? (
+                  <Spinner color="white" />
+                ) : isHoverUD ? (
+                  'Disconnect'
+                ) : (
+                  `${userUD.idToken.sub}`
                 )}
               </Button>
             )}
