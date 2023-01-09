@@ -52,19 +52,20 @@ const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
 
   const getContract = async () => {
     const tempSigner = await provider.getSigner()
-    console.log('___tempSigner', tempSigner)
     setSigner(tempSigner)
 
     if (activeChain?.id == CHAIN_ID_BAOBAB) {
       console.log('1001 network? ', activeChain.id)
-      const deployedContract = '0x6239B8e5dFE71564f580FDA36609A6D96229B3B7'
+      const deployedContract = '0x70bE996181753b9A767753C4d91030573c638295'
       let contract = new ethers.Contract(deployedContract, ABI, signer)
       setContract(contract)
     } else if (activeChain?.id == CHAIN_ID_MUMBAI) {
       console.log('80001 network? ', activeChain.id)
-      const deployedContract = '0x84260728E9A7fEA9Ab39f8Ca583Ed0afa2557bC0'
+      const deployedContract = '0x1b91ec002a6db58adD892d264Bd0b7FBc377C13d'
       let contract = new ethers.Contract(deployedContract, ABI, signer)
       setContract(contract)
+    } else {
+      alert('Please connect to Klaytn Test Network!')
     }
   }
 
@@ -88,6 +89,7 @@ const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
 
     if (activeChain?.id !== CHAIN_ID_MUMBAI && switchNetwork)
       switchNetwork(CHAIN_ID_BAOBAB)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeChain])
 
   return (
