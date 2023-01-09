@@ -319,7 +319,7 @@ function Profile() {
             paddingTop: '2rem',
           }}
         >
-          All completed tasks details
+          All completed tasks details.
         </h1>
 
         <SimpleGrid columns={2} gap={5} pt={10}>
