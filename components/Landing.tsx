@@ -77,44 +77,45 @@ export function Landing() {
         }
       }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const connectWallet = async () => {
-    try {
-      const ethereum = getEthereumObject()
-      if (!ethereum) {
-        alert('Please get a Wallet!')
-        return
-      }
-      setProvider(new ethers.providers.Web3Provider(window.ethereum))
-      await window.ethereum
-        .request({
-          method: 'wallet_requestPermissions',
-          params: [
-            {
-              eth_accounts: {},
-            },
-          ],
-        })
-        .then(() =>
-          ethereum.request({
-            method: 'eth_requestAccounts',
-          }),
-        )
-        .then((account: string) => {
-          if (account.length > 0) {
-            setAccount(account[0])
-            window.localStorage.setItem('isWalletConnected', true)
-            const fetchedAddress = window.localStorage.getItem('ACCOUNT')
-            if (!account && fetchedAddress) setAccount(fetchedAddress)
-            if (account && account !== fetchedAddress)
-              window.localStorage.setItem('ACCOUNT', account)
-          }
-        })
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  // const connectWallet = async () => {
+  //   try {
+  //     const ethereum = getEthereumObject()
+  //     if (!ethereum) {
+  //       alert('Please get a Wallet!')
+  //       return
+  //     }
+  //     setProvider(new ethers.providers.Web3Provider(window.ethereum))
+  //     await window.ethereum
+  //       .request({
+  //         method: 'wallet_requestPermissions',
+  //         params: [
+  //           {
+  //             eth_accounts: {},
+  //           },
+  //         ],
+  //       })
+  //       .then(() =>
+  //         ethereum.request({
+  //           method: 'eth_requestAccounts',
+  //         }),
+  //       )
+  //       .then((account: string) => {
+  //         if (account.length > 0) {
+  //           setAccount(account[0])
+  //           window.localStorage.setItem('isWalletConnected', true)
+  //           const fetchedAddress = window.localStorage.getItem('ACCOUNT')
+  //           if (!account && fetchedAddress) setAccount(fetchedAddress)
+  //           if (account && account !== fetchedAddress)
+  //             window.localStorage.setItem('ACCOUNT', account)
+  //         }
+  //       })
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
 
   return (
     <div className={styles.container}>

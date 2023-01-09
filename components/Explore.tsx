@@ -146,6 +146,7 @@ function Explore() {
                   width={282}
                   objectFit={'cover'}
                   src="./group0.png"
+                  alt="user"
                 />
               </Box>
               <Stack pt={10} align={'center'}>
@@ -230,6 +231,7 @@ function Explore() {
                   width={282}
                   objectFit={'cover'}
                   src="./group1.png"
+                  alt="user"
                 />
               </Box>
               <Stack pt={10} align={'center'}>
@@ -314,6 +316,7 @@ function Explore() {
                   width={282}
                   objectFit={'cover'}
                   src="./group2.png"
+                  alt="user"
                 />
               </Box>
               <Stack pt={10} align={'center'}>
@@ -359,7 +362,7 @@ function Explore() {
             </Box>
           </Flex>
         </Center>
-        <Image objectFit={'cover'} src="./lear.png" pt={8} />
+        <Image objectFit={'cover'} src="./lear.png" alt="user" pt={8} />
       </main>
     </div>
   )

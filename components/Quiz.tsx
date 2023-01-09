@@ -3,11 +3,12 @@ import { toastClaimFailure, toastClaimSuccess } from '@utils/toast'
 
 import styles from '../styles/Home.module.css'
 import RewardPill from './RewardPill'
-import { use, useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { MyAppContext } from 'pages/_app'
 
 type QuestCardProps = {
   title: string
+  selectedTask: any
 }
 
 function TotalCorrect(props) {

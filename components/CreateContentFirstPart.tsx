@@ -30,7 +30,7 @@ function CreateContentFirstPart({
       'https://api.pinata.cloud/pinning/pinFileToIPFS',
       updataData,
       {
-        maxContentLength: 'Infinity',
+        maxContentLength: Infinity,
         headers: {
           'Content-Type': 'multipart/form-data',
 
@@ -45,7 +45,7 @@ function CreateContentFirstPart({
 
   return (
     <div style={{ width: '80%' }}>
-      {image ? <img src={image} alt="pet" className="img-preview" /> : ''}
+      {image ? <Image src={image} alt="pet" className="img-preview" /> : ''}
 
       <div style={{ paddingTop: '.5rem', paddingBottom: '1rem' }}>
         <label htmlFor="formFileImage5" className={styles.upload}>

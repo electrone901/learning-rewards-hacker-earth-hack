@@ -287,7 +287,7 @@ function Profile() {
 
   return (
     <VStack pt="9rem" pb="9rem">
-      <img
+      <Image
         style={{
           border: '3px solid white',
           borderRadius: '50%',

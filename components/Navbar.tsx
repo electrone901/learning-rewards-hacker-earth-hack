@@ -21,7 +21,7 @@ const Navbar = ({ account, setAccount }) => {
 
   function onClickDisconnect() {
     window.localStorage.removeItem('ACCOUNT')
-    window.localStorage.setItem('isWalletConnected', false)
+    window.localStorage.setItem('isWalletConnected', 'false')
 
     setAccount(undefined)
     router.push('/')

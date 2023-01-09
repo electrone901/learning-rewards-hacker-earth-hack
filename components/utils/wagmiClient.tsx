@@ -9,17 +9,17 @@ type RPC_URL_MAP = {
   [key: number]: string
 }
 
-const RPC_URL: RPC_URL_MAP = {
-  1: alchemyRpcUrls.mainnet,
-  3: alchemyRpcUrls.ropsten,
-  5: alchemyRpcUrls.goerli,
-  420: alchemyRpcUrls.optimismGoerli,
-  10: alchemyRpcUrls.optimism,
-  137: alchemyRpcUrls.polygon,
-  80001: alchemyRpcUrls.polygonMumbai,
-  42161: alchemyRpcUrls.arbitrum,
-  421613: alchemyRpcUrls.arbitrumGoerli,
-}
+// const RPC_URL: RPC_URL_MAP = {
+//   1: alchemyRpcUrls.mainnet,
+//   3: alchemyRpcUrls.ropsten,
+//   5: alchemyRpcUrls.goerli,
+//   420: alchemyRpcUrls.optimismGoerli,
+//   10: alchemyRpcUrls.optimism,
+//   137: alchemyRpcUrls.polygon,
+//   80001: alchemyRpcUrls.polygonMumbai,
+//   42161: alchemyRpcUrls.arbitrum,
+//   421613: alchemyRpcUrls.arbitrumGoerli,
+// }
 
 const clientOptions = {
   autoConnect: true,

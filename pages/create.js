@@ -16,7 +16,7 @@ import { useRouter } from 'next/router'
 import CreateContentFirstPart from '@components/CreateContentFirstPart'
 import withTransition from '@components/withTransition'
 import { apiKey } from '../components/APIKEYS'
-import { MyAppContext } from '../pages/_app'
+import { MyAppContext } from './_app'
 import { ethers } from 'ethers'
 
 const CustomeInput = ({ setTempOption }) => {
@@ -67,30 +67,30 @@ function Create() {
       correct: 1,
     },
   ]
-  const [creatingQuiz, setCreatingQuiz] = useState<boolean>(false)
+  const [creatingQuiz, setCreatingQuiz] = useState(false)
   //   - show success
 
   // First part
-  const [title, setTitle] = useState<string>('')
-  const [image, setImage] = useState<string>('')
-  const [description, setDescription] = useState<string>('')
-  const [level, setLevel] = useState<string>('')
-  const [rewardAmount, setRewardAmount] = useState<string>('')
-  const [experiencePoint, setExperiencePoint] = useState<string>('')
-  const [subscriptionFee, setSubscriptionFee] = useState<string>('')
+  const [title, setTitle] = useState('')
+  const [image, setImage] = useState('')
+  const [description, setDescription] = useState('')
+  const [level, setLevel] = useState('')
+  const [rewardAmount, setRewardAmount] = useState('')
+  const [experiencePoint, setExperiencePoint] = useState('')
+  const [subscriptionFee, setSubscriptionFee] = useState('')
   const router = useRouter()
   const toast = useToast()
-  const [isLoading, setLoading] = useState<boolean>(false)
+  const [isLoading, setLoading] = useState(false)
 
   // Second part
-  const [data, setData] = useState<any>([])
-  const [showFirstPart, setShowFirstPart] = useState<boolean>(true)
-  const [question, setQuestion] = useState<string>('')
-  const [correctAnswer, setCorrectAnswer] = useState<string>('')
-  const [option1, setOption1] = useState<string>('')
-  const [tempOption, setTempOption] = useState<string>('')
-  const [optionArray, setOptionArray] = useState<any>([])
-  const [optionList, setOptionList] = useState<any>([])
+  const [data, setData] = useState([])
+  const [showFirstPart, setShowFirstPart] = useState(true)
+  const [question, setQuestion] = useState('')
+  const [correctAnswer, setCorrectAnswer] = useState('')
+  const [option1, setOption1] = useState('')
+  const [tempOption, setTempOption] = useState('')
+  const [optionArray, setOptionArray] = useState([])
+  const [optionList, setOptionList] = useState([])
 
   const SaveAllAndPublish = async () => {
     if (!account || !contract) alert('Please connect your wallet!')

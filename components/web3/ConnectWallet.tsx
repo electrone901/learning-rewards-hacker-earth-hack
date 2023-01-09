@@ -82,7 +82,7 @@ const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
       setAccount(data.address)
       const tempProvider = data.connector
       setProvider(tempProvider)
-      window.localStorage.setItem('isWalletConnected', true)
+      window.localStorage.setItem('isWalletConnected', 'true')
       const fetchedAddress = window.localStorage.getItem('ACCOUNT')
       if (!account && fetchedAddress) setAccount(fetchedAddress)
       if (account && account !== fetchedAddress)
@@ -159,7 +159,7 @@ const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
                 color: '#4b4f56',
                 borderRadius: '0',
               }}
-              onClick={() => switchNetwork && switchNetwork(CHAIN_ID)}
+              onClick={() => switchNetwork && switchNetwork(CHAIN_ID_BAOBAB)}
             >
               Switch Network
             </Button>
