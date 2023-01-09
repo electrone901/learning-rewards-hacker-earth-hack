@@ -85,7 +85,7 @@ const ConnectWallet = ({ isMobile, size }: ConnectWalletProps) => {
       if (!account && fetchedAddress) setAccount(fetchedAddress)
       if (account && account !== fetchedAddress)
         window.localStorage.setItem('ACCOUNT', account)
-      getContract()
+      // getContract()
     }
 
     if (activeChain?.id !== CHAIN_ID_MUMBAI && switchNetwork)

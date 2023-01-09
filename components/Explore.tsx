@@ -18,6 +18,7 @@ import withTransition from '@components/withTransition'
 import ProjectDetails from '@components/ProjectDetails'
 import QuestCard from './QuestCard'
 import { useEffect, useState } from 'react'
+import AwardNfts from '../components/award-nfts/AwardNfts'
 
 import Error404 from '@components/404'
 
@@ -100,7 +101,7 @@ function Explore() {
 
         {/*  */}
 
-        <ProjectDetails />
+        {/* <ProjectDetails /> */}
         {/* old */}
 
         {/* HOW IT WORKS*/}

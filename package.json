@@ -32,6 +32,9 @@
         "nft.storage": "^7.0.0",
         "react-confetti": "^6.1.0",
         "react-draft-wysiwyg": "^1.15.0",
+        "@material-ui/core": "^4.12.4",
+        "@material-ui/icons": "^4.11.2",
+        "@material-ui/lab": "^4.0.0-alpha.60",
         "uuid": "^9.0.0"
     },
     "devDependencies": {

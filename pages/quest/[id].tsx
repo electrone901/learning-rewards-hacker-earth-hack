@@ -244,6 +244,9 @@ function Quest() {
     () => (fetchedQuest ? Object.values(fetchedQuest.steps) : []),
     [fetchedQuest],
   )
+  const sentToAwardNFT = () => {
+    router.push('/tip')
+  }
 
   // set fetched quest on initial render
   // useEffect(() => {
@@ -266,6 +269,7 @@ function Quest() {
 
   return (
     <VStack className={styles.container}>
+      <Button onClick={sentToAwardNFT}>Send Tip</Button>
       <Quiz title="YAY" selectedTask={selectedTask} />
 
       {isQuestSuccessfullycompleted && (

@@ -12,7 +12,7 @@ import { useTron } from "@components/TronProvider";
 import withTransition from "@components/withTransition";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import styles from "@styles/Quest.module.css";
-import SuccessLottie from "@components/SuccessLottie";
+// import SuccessLottie from "@components/SuccessLottie";
 import { useRouter } from "next/router";
 import Error404 from "@components/404";
 
